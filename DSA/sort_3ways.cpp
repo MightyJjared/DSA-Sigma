@@ -48,6 +48,26 @@ void insertionsort(int arr[], int n){
 }
 // {5,2,3,7,8}, {2,5,3,7,8}, {2,3,5,7,8} , {2,3,5,7,8}
 
+void countsort(int arr[], int n){
+    int freq[10000] = {0};
+    int minval = INT16_MAX, maxval = INT16_MIN;
+    for(int i =0;i<n;i++){
+        minval = min(minval, arr[i]);
+        maxval = max(maxval, arr[i]);
+    }
+
+    for(int i=0; i<n; i++){
+        freq[arr[i]] += 1;
+    }
+    for(int i = minval,j=0;i<=maxval;i++){
+        while(freq[i]>0){
+            arr[j] = i;
+            j++;
+            freq[i]--;
+        }
+    }
+}
+
 void printarray(int arr[], int n){
     for(int i=0;i<n;i++){
         cout << arr[i] <<  " ";
