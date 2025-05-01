@@ -6,7 +6,7 @@ using namespace std;
 
 int firstoccurence(vector<int> vec, int target, int idx){
     if(idx == vec.size()){
-        return false;
+        return -1;
     }
     if(vec[idx] == target){
         return idx;
@@ -15,7 +15,7 @@ int firstoccurence(vector<int> vec, int target, int idx){
 }
 int main(){
     vector<int> vec = {4,6,1,7,7,3};
-    int target = 9;
+    int target = 7;
     int result = firstoccurence(vec, target,0);
     cout << result << endl;
     return 0;
