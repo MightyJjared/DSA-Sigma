@@ -2,41 +2,44 @@
 #include <vector>
 using namespace std;
 
+// Partition function using Lomuto partition scheme
 int pivot(vector<int> &vec, int st , int end){
-    int i =st-1;
-    int pivot = vec[end];
-    for(int j = st; j< end; j++){
+    int i = st - 1;
+    int pivot = vec[end]; // Choose last element as pivot
+
+    // Traverse and partition
+    for(int j = st; j < end; j++){
         if(vec[j] < pivot){
             i++;
-            swap(vec[j], vec[i]);
+            swap(vec[j], vec[i]); // Place smaller element on the left
         }
     }
+
+    // Put pivot in the correct position
     i++;
     swap(vec[i], vec[end]);
-    return i;
+    return i; // Return the index of the pivot
 }
+
+// Recursive Quick Sort
 void quicksort(vector<int> &vec, int st, int end){
-    if(st >= end){
-        return;
-    }
+    if(st >= end) return;
+
     int pivotindex = pivot(vec, st, end);
 
-    quicksort(vec, st, pivotindex-1);
-    quicksort(vec, pivotindex+1, end);
-   
+    quicksort(vec, st, pivotindex - 1);   // Sort left
+    quicksort(vec, pivotindex + 1, end);  // Sort right
 }
 
 int main(){
-    vector<int> vec = {6, 1, 8, 3, 9, 23}; // Input array
-    int start = 0;
-    int end = vec.size() - 1;
+    vector<int> vec = {6, 1, 8, 3, 9, 23};
+    quicksort(vec, 0, vec.size() - 1);
 
-    quicksort(vec, start, end);  // Perform quick sort
-
-    // Output the sorted array
     for(int i = 0; i < vec.size(); i++){
         cout << vec[i] << " ";
     }
     cout << endl;
+
     return 0;
 }
+
