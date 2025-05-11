@@ -2,6 +2,9 @@
 #include <string>
 using namespace std;
 
+// its the same question as Gridways1 but here it also prints the ways we took to reach
+// the destination with R as right and D as down.
+
 int totalways(int row, int col, int n, int m, string ans){
     if(row == n-1 && col == m-1){ // 1 base case, reached destination
         cout << ans << endl;

@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
- same question but just it returns the count of all possible solution for N
+ //same question but just it returns the count of all possible solution for N
 void print(vector<vector<char>> &board){
     int n = board.size();
     for(int i =0; i<n; i++){
