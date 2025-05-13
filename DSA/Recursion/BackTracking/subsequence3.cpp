@@ -4,6 +4,10 @@ using namespace std;
 
 // it is same as subsequence1 bu instead we are just print the first subsequences whose sum is 3, not all whose
 // sum is 3.
+// ** important trick - if we want to print only first answer, and not the rest we just have to change the function
+// to bool and add return true when base condition is met or and return false at the end of base condition
+// and also add return true to how everytime we call a funtion recursively. Compare subsequence 2 and 3 to get 
+// clear understanding.
 bool subsequence(int arr[], int n, int index, vector<int> &ans, int sum) {
     if (index == n) {
         if (sum == 3) {

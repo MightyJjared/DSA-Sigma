@@ -2,10 +2,11 @@
 #include <vector>
 using namespace std;
 
-void merge(vector<int> arr, int st,int mid, int end){
+void merge(int arr[], int low, int mid, int high){
     vector<int> temp;
-    int i = st, j = mid+1;
-    while(st <= mid && j <= end){
+    int i = low;
+    int j = mid+1;
+    while(i<=mid && j <= high){
         if(arr[i] < arr[j]){
             temp.push_back(arr[i]);
             i++;
@@ -14,40 +15,40 @@ void merge(vector<int> arr, int st,int mid, int end){
             temp.push_back(arr[j]);
             j++;
         }
-        while(i<=mid){
-            temp.push_back(arr[i]);
-            i++;
-        }
-        while(j<=end){
-            temp.push_back(arr[j]);
-            j++;
-        }
-        for(int idx =0; idx< temp.size();idx++){
-            arr[st+idx] = temp[idx];
-        }
-
     }
-} 
+    while(i<=mid){
+        temp.push_back(arr[i]);
+        i++;
+    }
+    while(j<=high){
+        temp.push_back(arr[j]);
+        j++;
+    }
 
-void mergesort(vector<int> arr, int st, int end){
-    if(st < end){
-        int mid = st + (end-st)/2;
-
-        mergesort(arr,st,mid);
-        mergesort(arr,mid+1,end);
-
-        merge(arr,st,mid,end);
+    for(int idx=0; idx<temp.size();idx++){
+        arr[low+idx]= temp[idx];
     }
 }
 
+void mergesort(int arr[], int low, int high){
+    if(low >= high){
+        return;
+    }
+    int mid = low + (high-low)/2;
+
+    mergesort(arr,low,mid);
+    mergesort(arr,mid+1,high);
+    merge(arr,low,mid,high);
+
+}
 int main(){
-    vector<int> arr = {6,3,8,1,7,32};
-    int st =0;
-    int end = arr.size()-1;
-    mergesort(arr,st,end);
-    for(int i =0; i< arr.size(); i++){
+    int arr[] = {5,2,7,1,8,2,9};
+    int low = 0;
+    int high = 6;
+    mergesort(arr,low,high);
+    for(int i =0; i<7;i++){
         cout << arr[i] << " ";
     }
     cout << endl;
-    return 0;
+    return 0; 
 }

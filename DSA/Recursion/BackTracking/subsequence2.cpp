@@ -5,7 +5,7 @@ using namespace std;
 // it is same as subsequence1 bu instead we are just print the subsequences whose sum is 3
 void subsequence(int arr[], int n, int index, vector<int> &ans, int sum) {
     if (index == n) {
-        if (sum == 3) {
+        if (sum == 4) {
             for (int i = 0; i < ans.size(); i++) {
                 cout << ans[i] << " ";
             }
