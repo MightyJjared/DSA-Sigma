@@ -2,12 +2,8 @@
 #include <vector>
 using namespace std;
 
-
  // using arrays
 // Recursive function to generate subsequences
-#include <iostream>
-#include <vector>
-using namespace std;
 
 void subsequence(int arr[], int n, int index, vector<int> &ans) {
     if (index == n) {
