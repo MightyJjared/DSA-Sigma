@@ -3,7 +3,7 @@
 using namespace std;
 
 // explanation for this is understand print_subsets code and watch video of mam
-
+// if n =3 permutatons will be n!
 void permutation(string str, string ans){
     int n = str.size();
     if(str.size() == 0){
@@ -39,4 +39,4 @@ int main(){
              /              \         /              \         /              \
      per("c", "ab")  per("b", "ac") per("c", "ba")  per("a", "bc") per("b", "ca") per("a", "cb")
            |               |              |               |              |               |
-   per("", "abc")  per("", "acb")  per("", "bac")  per("", "bca")  per("", "cab")  per("", "cba")
+   per("", "abc")  per("", "acb")  per("", "bac")  per("", "bca")  per("", "cab")  per("", "cba")*/
