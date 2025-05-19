@@ -26,7 +26,7 @@ int totalways(int row, int col, int n, int m){
     // right choice
     int val1 = totalways(row,col+1,n,m);
 
-    // left choice
+    // down choice
     int val2 = totalways(row+1,col,n,m);
 
     return val1 + val2;
