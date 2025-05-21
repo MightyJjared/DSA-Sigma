@@ -185,9 +185,9 @@ public:
 int main(){
     List l1;
     l1.insertatfirst(20);
-    l1.insertatfirst(10);
-    l1.insertatlast(30);
-    l1.insertatposition(25,2); // position is starting from 0 not 1
+    l1.insertatfirst(30);
+    l1.insertatlast(10);
+   // l1.insertatposition(25,2); // position is starting from 0 not 1
     //l1.deletefirstnode();
     //l1.deletelastnode();
     l1.printlist();
