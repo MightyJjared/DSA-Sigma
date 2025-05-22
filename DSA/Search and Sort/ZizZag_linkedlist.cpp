@@ -88,8 +88,8 @@ Node* zigzag(Node* head){
         left -> next = right;
         left = nextleft;
 
-        if (left == NULL) break;
-        
+        if (left == NULL) break; // for odd linked list
+
         Node* nextright = right -> next;
         right -> next = left;
         right = nextright;
