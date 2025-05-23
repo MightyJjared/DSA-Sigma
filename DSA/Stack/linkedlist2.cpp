@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 
+// stack implentation using linked list without STL library
 template<class T>
 class Node{
     public:
@@ -17,7 +18,7 @@ class Node{
 template<class T>
 class Stack{
     Node<T>* head;
-    
+
     public:    
     Stack(){
         head = NULL;
