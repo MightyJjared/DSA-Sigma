@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-// Stack implementation using vector for integers
+// Stack implementation using vector for any data types like int , char ,string, bool using template
 template<class T>
 class Stack{
     vector<T> vec;
