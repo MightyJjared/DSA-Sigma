@@ -2,6 +2,7 @@
 #include <stack>
 using namespace std;
 
+// stack using library it can also be char , string etc
 int main(){
     stack<int> s1;
     s1.push(3);
