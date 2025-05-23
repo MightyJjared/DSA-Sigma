@@ -2,7 +2,7 @@
 #include <stack>
 using namespace std;
 
-
+// we are creating a function which will push element to the bottom of the stack
 void pushatbottom(stack<int> &s, int val){
     if(s.empty()){
         s.push(val);
