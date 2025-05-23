@@ -3,6 +3,7 @@
 #include <stack>
 using namespace std;
 
+// reversing a string using stack
 string reversestring(string str){
     stack<char> s;
     for(int i =0;i< str.size(); i++){
