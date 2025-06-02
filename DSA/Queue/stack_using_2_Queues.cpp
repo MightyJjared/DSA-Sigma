@@ -2,9 +2,9 @@
 #include <queue>
 using namespace std;
 
-// Implementing a queue usin 2 stacks
-// Appproach whenever we push an element into stack first tranfer all the elements in stack(s1) to another stack(s2)
-// then push your elemnt into s1 then tranfer all element from s2 back to s1;
+// Implementing a stack usin 2 queue
+// Appproach whenever we push an element into queue first tranfer all the elements in queue(q1) to another queue(q2)
+// then push your elemnt into q1 then tranfer all element from q2 back to q1;
 class Stack{
     queue<int> q1;
     queue<int> q2;
