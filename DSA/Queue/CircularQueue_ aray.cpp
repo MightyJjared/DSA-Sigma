@@ -2,7 +2,7 @@
 using namespace std;
 
 // We are implenting a circular queue using array
-// Approach - sinc array size is limited we will use two pointers frontindex and rear tot rak first and last element
+// Approach - sinc array size is limited we will use two pointers frontindex and rear to track first and last element
 // of the array whenever we push we will first move rear to the next index and at that index we will place our 
 // elemetn at that index and front will track the frst element in our queue, it does not neet to be index 0 it is 
 // changing everytime.

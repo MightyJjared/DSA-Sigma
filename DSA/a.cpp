@@ -1,77 +1,49 @@
 #include <iostream>
 #include <queue>
+#include <vector>
 using namespace std;
 
-int timeRequiredToBuy1(int arr[], int n, int k){
-    int count = 0;
-    while(arr[k] > 0){
-        for(int i = 0; i < n; i++){
-            if(arr[i] > 0){
-                arr[i]--;
-                count++;
-            }
-            if(arr[k] == 0){
-                break;
-            }
-        }
+class node{
+    public:
+    int data;
+    node* left;
+    node* right;
+
+    node(int x){
+        data = x;
+        left = right = NULL;
     }
-    return count;
+};
+
+static int index = -1;
+
+node* binarytree(vector<int> preorder){
+    index++;
+    if(preorder[index] == -1){
+        return NULL;
+    }
+    node* current_node  = new node(preorder[index]);
+    current_node -> left = binarytree(preorder);
+    current_node -> right = binarytree(preorder);
+
+    return current_node;
 }
 
-int timeRequiredToBuy2(int arr[], int n, int k){
-    queue<int> q;
-    for(int i =0; i< n;i++){
-        q.push(i);
+void Preorder(node* root){
+    if(root == NULL){
+        return;
     }
-    int count = 0;
-    while(arr[k] > 0){
-        for(int i =0; i< n;i++){
-            if(i != q.front()){
-                continue;
-            }
-            if(arr[i] > 0){
-                count++;
-                arr[i]--;
-                q.pop();
-                if(arr[i] > 0){
-                    q.push(i);
-                }
-            }
-            if(arr[k] == 0){
-                break;
-            }
-        }
-    }
-    return count;
+
+    cout << root -> data << " ";
+    Preorder(root -> left);
+    Preorder(root -> right);
 }
 
-int timeRequiredToBuy3(int arr[], int n, int k){
-    queue<int> q;
-    for(int i =0; i< n;i++){
-        q.push(i);
-    }
-    int count = 0;
-    while(arr[k] > 0){
-        if(arr[q.front()] > 0){
-            count ++;
-            arr[q.front()]--;
-            if(arr[q.front()] > 0){
-                q.push(q.front());
-                q.pop();
-            }
-            else{
-                q.pop();
-            }
-        }
-    }
-    return count;
-}
 
 int main(){
-    int arr[] = {5,1,1,1};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    int k = 0;
-
-    cout << timeRequiredToBuy3(arr, n, k) << endl;
-    return 0;
+    vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
+    node *  root = binarytree(preorder);
+    Preorder(root);
+    cout  <<  endl;
+    return 0; 
 }
