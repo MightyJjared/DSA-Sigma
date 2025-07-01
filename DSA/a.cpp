@@ -1,49 +1,95 @@
 #include <iostream>
-#include <queue>
 #include <vector>
 using namespace std;
 
 class node{
     public:
     int data;
-    node* left;
     node* right;
+    node* left;
 
     node(int x){
         data = x;
-        left = right = NULL;
+        right = left = NULL;
     }
 };
 
-static int index = -1;
-
-node* binarytree(vector<int> preorder){
-    index++;
-    if(preorder[index] == -1){
-        return NULL;
+node* insert(node* root, int value){
+    if(root == NULL){
+        root = new node(value);
+        return root;
     }
-    node* current_node  = new node(preorder[index]);
-    current_node -> left = binarytree(preorder);
-    current_node -> right = binarytree(preorder);
-
-    return current_node;
+    if(value < root -> data){
+        root -> left = insert(root -> left, value);
+    }
+    else if(value > root -> data){
+        root -> right = insert(root -> right, value);
+    }
+    return root;
 }
 
-void Preorder(node* root){
+node* BST(vector<int> vec, int size){
+    node* root = NULL;
+    for(int i =0; i< size; i++){
+        root = insert(root, vec[i]);
+    }
+    return root;
+}
+
+void inorder(node* root){
     if(root == NULL){
         return;
     }
-
+    inorder(root -> left);
     cout << root -> data << " ";
-    Preorder(root -> left);
-    Preorder(root -> right);
+    inorder(root -> right);
 }
 
+bool search(node * root, int target){
+    if(root == NULL){
+        return false;
+    }
+    if(root -> data == target){
+        return true;
+    }
+    else if(root -> data < target){
+        return search(root -> right, target);
+    }
+    else {
+        return search(root -> left, target);
+    }
+}
+
+int findmin(node* root){
+    if(root == NULL){
+        cout << "Tree is empty.\n";
+        return -1;
+    }
+    while(root -> left != NULL){
+        root = root -> left;
+    }
+    return root -> data;
+}
+
+int findmax(node* root){
+    if(root == NULL){
+        cout << "Tree is empty.\n";
+        return -1;
+    }
+    while(root -> right != NULL){
+        root = root -> right;
+    }
+    return root -> data;
+}
 
 int main(){
-    vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
-    node *  root = binarytree(preorder);
-    Preorder(root);
-    cout  <<  endl;
-    return 0; 
+    vector<int> vec = {5,2,8,1,9,6,9,3};
+    int size = vec.size();
+    node* root = BST(vec, size);
+    inorder(root);
+    cout << endl;
+    cout << search(root, 8) << endl;
+    cout << "Min is : " << findmin(root) << endl;
+    cout << "Max is : " << findmax(root) << endl;
+    return 0;
 }
