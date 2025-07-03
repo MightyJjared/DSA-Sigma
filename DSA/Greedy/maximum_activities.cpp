@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 
+//it is called activity selection problem
+//it is important that the end vector must be sorted in ascending order
+
 int max_activity(vector<int> start, vector<int> end){
     int count = 1;
     int currentend = end[0];

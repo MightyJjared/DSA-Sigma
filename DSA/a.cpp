@@ -15,7 +15,7 @@ class node{
 };
 
 node* insert(node* root, int value){
-    if(root == NULL){
+    if(root == NULL){ // hi
         root = new node(value);
         return root;
     }
