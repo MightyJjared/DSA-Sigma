@@ -27,12 +27,12 @@ node* binarytree(vector<int> preorder){
     return root;
 }
 
-int sum(node* root){
+int height(node* root){
     if(root == NULL){
         return 0;
     }
-    int leftheight = sum(root -> left);
-    int rightheight = sum(root -> right);
+    int leftheight = height(root -> left);
+    int rightheight = height(root -> right);
     int currentHeight = max(leftheight, rightheight) + 1;
     return currentHeight;
 }
@@ -40,6 +40,6 @@ int sum(node* root){
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     node *  root = binarytree(preorder);
-    cout << sum(root) << endl;
+    cout << height(root) << endl;
     return 0; 
 }

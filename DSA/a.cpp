@@ -1,38 +1,29 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 class node{
     public:
     int data;
-    node* right;
     node* left;
+    node* right;
 
-    node(int x){
-        data = x;
-        right = left = NULL;
+    node(int data){
+        this -> data = data;
+        left = right = NULL;
     }
 };
 
-node* insert(node* root, int value){
-    if(root == NULL){ // hi
-        root = new node(value);
-        return root;
+static int idx = -1;
+node* binarytree(vector<int> vec){
+    idx++;
+    if(vec[idx] == -1){
+        return NULL;
     }
-    if(value < root -> data){
-        root -> left = insert(root -> left, value);
-    }
-    else if(value > root -> data){
-        root -> right = insert(root -> right, value);
-    }
-    return root;
-}
-
-node* BST(vector<int> vec, int size){
-    node* root = NULL;
-    for(int i =0; i< size; i++){
-        root = insert(root, vec[i]);
-    }
+    node* root = new node(vec[idx]);
+    root -> left = binarytree(vec);
+    root -> right = binarytree(vec);
     return root;
 }
 
@@ -40,56 +31,83 @@ void inorder(node* root){
     if(root == NULL){
         return;
     }
-    inorder(root -> left);
-    cout << root -> data << " ";
+    inorder(root->left);
+    cout << root-> data << " ";
     inorder(root -> right);
 }
 
-bool search(node * root, int target){
-    if(root == NULL){
-        return false;
-    }
-    if(root -> data == target){
-        return true;
-    }
-    else if(root -> data < target){
-        return search(root -> right, target);
-    }
-    else {
-        return search(root -> left, target);
+void levelorder(node* root){
+    queue<node*> q;
+    q.push(root);
+    cout << endl;
+    q.push(NULL);
+    while(!q.empty()){
+        node* current = q.front();
+        q.pop();
+
+        if(current == NULL){
+            if(q.empty()){
+                cout << endl;
+                break;
+            }
+            cout << endl;
+            q.push(NULL);
+        }
+        else{
+            cout << current -> data << " ";
+        if(current->left != NULL){
+            q.push(current -> left);
+        }
+        if(current->right != NULL){
+            q.push(current -> right);
+        }
+        }
     }
 }
 
-int findmin(node* root){
+int height(node*root){
     if(root == NULL){
-        cout << "Tree is empty.\n";
-        return -1;
+        return 0;
     }
-    while(root -> left != NULL){
-        root = root -> left;
-    }
-    return root -> data;
+    int left_height = height(root->left);
+    int right_height = height(root -> right);
+    int current_height = max(left_height, right_height) + 1;
+    return current_height;
 }
 
-int findmax(node* root){
+int count(node*root){
     if(root == NULL){
-        cout << "Tree is empty.\n";
-        return -1;
+        return 0;
     }
-    while(root -> right != NULL){
-        root = root -> right;
+    int left_count = count(root->left);
+    int right_count = count(root -> right);
+    int current_count = left_count + right_count + 1;
+    return current_count;
+}
+
+int sum(node*root){
+    if(root == NULL){
+        return 0;
     }
-    return root -> data;
+    int left_sum = sum(root->left);
+    int right_sum = sum(root -> right);
+    int current_sum = left_sum  + right_sum + root -> data;
+    return current_sum;
 }
 
 int main(){
-    vector<int> vec = {5,2,8,1,9,6,9,3};
+    vector<int> vec = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     int size = vec.size();
-    node* root = BST(vec, size);
+    node* root = binarytree(vec);
     inorder(root);
     cout << endl;
-    cout << search(root, 8) << endl;
-    cout << "Min is : " << findmin(root) << endl;
-    cout << "Max is : " << findmax(root) << endl;
+    levelorder(root);
+    cout << endl;
+    cout << height(root);
+    cout << endl;
+    cout << count(root);
+    cout << endl;
+    cout << sum(root);
+    cout << endl;
     return 0;
 }
