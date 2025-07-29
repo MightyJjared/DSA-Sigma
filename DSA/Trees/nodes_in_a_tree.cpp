@@ -27,12 +27,12 @@ node* binarytree(vector<int> preorder){
     return root;
 }
 
-int height(node* root){
+int nodes(node* root){
     if(root == NULL){
         return 0;
     }
-    int leftheight = height(root -> left);
-    int rightheight = height(root -> right);
+    int leftheight = nodes(root -> left);
+    int rightheight = nodes(root -> right);
     int currentCount = (leftheight + rightheight) + 1;
     return currentCount;
 }
@@ -40,6 +40,6 @@ int height(node* root){
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
     node *  root = binarytree(preorder);
-    cout << height(root) << endl;
+    cout << nodes(root) << endl;
     return 0; 
 }

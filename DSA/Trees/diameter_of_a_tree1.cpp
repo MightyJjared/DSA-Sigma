@@ -51,12 +51,12 @@ node* binarytree(vector<int> preorder){
     return root;
 }
 
-int height(node* root){
+int nodes(node* root){
     if(root == NULL){
         return 0;
     }
-    int leftheight = height(root -> left);
-    int rightheight = height(root -> right);
+    int leftheight = nodes(root -> left);
+    int rightheight = nodes(root -> right);
     int currentHeight = max(leftheight, rightheight) + 1;
     return currentHeight;
 }
@@ -65,7 +65,7 @@ int diameter(node* root){
     if(root == NULL){
         return 0;
     }
-    int current_diameter = height(root -> left) + height(root -> right) + 1;
+    int current_diameter = nodes(root -> left) + nodes(root -> right) + 1;
     int left_diameter = diameter(root -> left);
     int right_diameter = diameter(root -> right);
     return max(current_diameter, max(left_diameter, right_diameter));

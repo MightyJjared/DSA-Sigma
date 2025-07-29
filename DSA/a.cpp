@@ -65,12 +65,12 @@ void levelorder(node* root){
     }
 }
 
-int height(node*root){
+int nodes(node*root){
     if(root == NULL){
         return 0;
     }
-    int left_height = height(root->left);
-    int right_height = height(root -> right);
+    int left_height = nodes(root->left);
+    int right_height = nodes(root -> right);
     int current_height = max(left_height, right_height) + 1;
     return current_height;
 }
@@ -103,7 +103,7 @@ int main(){
     cout << endl;
     levelorder(root);
     cout << endl;
-    cout << height(root);
+    cout << nodes(root);
     cout << endl;
     cout << count(root);
     cout << endl;

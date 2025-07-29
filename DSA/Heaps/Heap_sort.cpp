@@ -9,10 +9,10 @@ void heapify(int parent, vector<int> &vec, int size){
     int rightchild = (2*parent) + 2;
     int max = parent;
 
-    if(leftchild < size && vec[leftchild] < vec[max]){
+    if(leftchild < size && vec[leftchild] > vec[max]){
         max = leftchild;
     }
-    if(rightchild < size && vec[rightchild] < vec[max]){
+    if(rightchild < size && vec[rightchild] > vec[max]){
         max = rightchild;
     }
 

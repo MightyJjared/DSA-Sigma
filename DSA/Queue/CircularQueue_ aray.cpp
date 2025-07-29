@@ -26,8 +26,8 @@ class Queue{
             cout << "Queue is full\n";
             return;
         }
-        rearIndex = (rearIndex + 1) % totalsize; // instead of using rear++ we are using this, it will help when rear is
-        // at the last index and we want to push the next element to 0 index 
+        rearIndex = (rearIndex + 1) % totalsize; //instead of using rear++ we are using this, it will help when rear is
+     // at the last index and we want to push the next element to 0 index 
         arr[rearIndex] = data;
         currentsize++;
     }
@@ -57,7 +57,8 @@ class Queue{
         }
     }
 
-    int last(){if(isempty()){
+    int last(){
+        if(isempty()){
         cout << "Queue is empty\n";
         return -1;
     }
