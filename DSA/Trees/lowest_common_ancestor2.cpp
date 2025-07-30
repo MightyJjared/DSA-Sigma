@@ -2,6 +2,15 @@
 #include <vector>
 using  namespace std;
 
+// This function finds the Lowest Common Ancestor (LCA) of two nodes (n1 and n2) in a binary tree.
+// The approach is: Traverse the tree recursively. If current node matches n1 or n2, return it.
+// Then check in left and right subtrees: 
+// - If both return non-NULL, current node is the LCA.
+// - If only one side is non-NULL, return that up.
+// - If both are NULL, return NULL.
+// Time Complexity: O(n) — where n is the number of nodes in the tree (each node visited once).
+// Space Complexity: O(1).
+
 class node{
     public:
     int data;
