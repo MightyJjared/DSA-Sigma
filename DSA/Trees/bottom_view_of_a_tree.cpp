@@ -20,8 +20,8 @@ using namespace std;
          / \    \
         4   5    6
 
-    Top View (nodes visible from top):
-    Output: 4 2 1 3 6
+    bottom View (nodes visible from the bottom of the tree):
+    Output: 4 2 5 3 6
     */
 
 class node{
@@ -62,9 +62,9 @@ void bottomview(node* root){
 
         q.pop();
 
-        if(m.count(current_Horizontal_distance) == 0){ // add distance and data in map
-            m[current_Horizontal_distance] = currentnode -> data;
-        }
+        // add distance and data in map
+        m[current_Horizontal_distance] = currentnode -> data;
+        
 
         if(currentnode -> left != NULL){
             pair<node*, int> left = make_pair(currentnode->left, current_Horizontal_distance -1);
@@ -75,7 +75,7 @@ void bottomview(node* root){
             q.push(right);
         }
     }
-    cout << "Top view of a tree = ";
+    cout << "bottom view of a tree = ";
     for(auto itr : m){
         cout << itr.second << " " ;
     }
