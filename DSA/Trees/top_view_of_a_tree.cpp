@@ -62,7 +62,7 @@ void topview(node* root){
 
         q.pop();
 
-        if(m.count(current_Horizontal_distance) == 0){
+        if(m.count(current_Horizontal_distance) == 0){ // add distance and data in map
             m[current_Horizontal_distance] = currentnode -> data;
         }
 
