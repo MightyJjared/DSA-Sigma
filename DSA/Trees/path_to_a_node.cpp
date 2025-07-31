@@ -7,6 +7,12 @@ using namespace std;
     Given the preorder traversal of a binary tree (with -1 representing NULL),
     build the binary tree and find the path from root to a specific node (say `target`).
     The path should be returned in the form of a vector<int>.
+     
+            1
+          /   \
+         2     3
+        / \     \
+       4   5     6
 
     Approach:
     1. Use recursive construction of the tree from preorder traversal.
