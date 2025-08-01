@@ -1,6 +1,4 @@
 #include <iostream>
-#include <vector>
-#include <queue>
 using namespace std;
 
 class node{
@@ -9,21 +7,55 @@ class node{
     node* left;
     node* right;
 
-    node(int data){
-        this -> data = data;
+    node(int x){
+        data = x;
         left = right = NULL;
     }
 };
 
-static int idx = -1;
-node* binarytree(vector<int> vec){
-    idx++;
-    if(vec[idx] == -1){
-        return NULL;
+node* insert(node* root, int val){
+    if(root == NULL){
+        node* root = new node(val);
+        return root;
     }
-    node* root = new node(vec[idx]);
-    root -> left = binarytree(vec);
-    root -> right = binarytree(vec);
+
+    if(root ->data > val){
+        root -> left = insert(root -> left, val);
+    }
+    if(root ->data < val){
+        root -> right = insert(root -> right, val);
+    }
+    return root;
+}
+
+node* buildBST(int arr[], int n){
+    node* root = NULL;
+    for(int i =0; i<n;i++){
+        root = insert(root,arr[i]);
+    }
+    return root;
+}
+
+bool search(node* root, int target){
+    if(root == NULL){
+        return false;
+    }
+
+    if(root -> data == target){
+        return true;
+    }
+    else if(root -> data > target){
+        return search(root -> left, target);
+    }
+    else{
+        return search(root -> right, target);
+    }
+}
+
+node* inordersuccessor(node* root){
+    while(root -> left != NULL){
+        root = root -> left;
+    }
     return root;
 }
 
@@ -31,83 +63,57 @@ void inorder(node* root){
     if(root == NULL){
         return;
     }
-    inorder(root->left);
-    cout << root-> data << " ";
+
+    inorder(root -> left);
+    cout << root -> data << " ";
     inorder(root -> right);
 }
 
-void levelorder(node* root){
-    queue<node*> q;
-    q.push(root);
-    cout << endl;
-    q.push(NULL);
-    while(!q.empty()){
-        node* current = q.front();
-        q.pop();
+node* deletenode(node* root, int val){
+    if(root == NULL){
+        return NULL;
+    }
+    if(root -> data > val){
+        root -> left = deletenode(root -> left, val);
+    }
+    else if(root -> data < val){
+        root -> right =  deletenode(root -> right, val);
+    }
+    else{
+        // root -> data == val
+        // 1 child case
+        if(root -> left == NULL && root -> right == NULL){
+            delete(root);
+            return NULL;
+        }
 
-        if(current == NULL){
-            if(q.empty()){
-                cout << endl;
-                break;
+        //  1 child case
+        if(root -> left == NULL || root -> right == NULL){
+            if(root -> left == NULL){
+                return root -> right;
             }
-            cout << endl;
-            q.push(NULL);
+            else{
+                return root -> left;
+            }
         }
-        else{
-            cout << current -> data << " ";
-        if(current->left != NULL){
-            q.push(current -> left);
-        }
-        if(current->right != NULL){
-            q.push(current -> right);
-        }
-        }
-    }
-}
 
-int nodes(node*root){
-    if(root == NULL){
-        return 0;
+        // 2 child case
+        node* Inorder = inordersuccessor(root -> right);
+        root -> data = Inorder -> data;
+        root -> right = deletenode(root -> right, Inorder -> data);
+        return root;
     }
-    int left_height = nodes(root->left);
-    int right_height = nodes(root -> right);
-    int current_height = max(left_height, right_height) + 1;
-    return current_height;
+    return root;
 }
-
-int count(node*root){
-    if(root == NULL){
-        return 0;
-    }
-    int left_count = count(root->left);
-    int right_count = count(root -> right);
-    int current_count = left_count + right_count + 1;
-    return current_count;
-}
-
-int sum(node*root){
-    if(root == NULL){
-        return 0;
-    }
-    int left_sum = sum(root->left);
-    int right_sum = sum(root -> right);
-    int current_sum = left_sum  + right_sum + root -> data;
-    return current_sum;
-}
-
 int main(){
-    vector<int> vec = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
-    int size = vec.size();
-    node* root = binarytree(vec);
+    int arr[] = {5,1,3,4,2,7};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    node * root = buildBST(arr,n);
     inorder(root);
     cout << endl;
-    levelorder(root);
-    cout << endl;
-    cout << nodes(root);
-    cout << endl;
-    cout << count(root);
-    cout << endl;
-    cout << sum(root);
+    cout << search(root, 4) <<endl;
+    deletenode(root, 4);
+    inorder(root);
     cout << endl;
     return 0;
 }
