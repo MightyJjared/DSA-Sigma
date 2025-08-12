@@ -57,5 +57,12 @@ int count(node* root){
     int left_count = count(root->left);
     int right_count = count(root -> right);
     int current_count = left_count + right_count + 1;
-    retur
+    return current_count;
+}
 
+int main(){
+    vector<int> vec = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
+    node* root = binarytree(vec);
+    cout << "Total number of nodes: " << count(root) << endl;
+    return 0;
+}

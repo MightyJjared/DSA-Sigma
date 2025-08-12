@@ -51,12 +51,12 @@ node* binarytree(vector<int> preorder){
     return root;
 }
 
-int nodes(node* root){
+int height(node* root){
     if(root == NULL){
         return 0;
     }
-    int leftheight = nodes(root -> left);
-    int rightheight = nodes(root -> right);
+    int leftheight = height(root -> left);
+    int rightheight = height(root -> right);
     int currentHeight = max(leftheight, rightheight) + 1;
     return currentHeight;
 }
@@ -65,11 +65,21 @@ int diameter(node* root){
     if(root == NULL){
         return 0;
     }
-    int current_diameter = nodes(root -> left) + nodes(root -> right) + 1;
+    int current_diameter = height(root -> left) + height(root -> right) + 1;
     int left_diameter = diameter(root -> left);
     int right_diameter = diameter(root -> right);
     return max(current_diameter, max(left_diameter, right_diameter));
 }
+
+/*
+    🔁 At each node, the longest path (diameter) could be:
+    1. Passing through the current node: left height + right height + 1
+    2. Completely in the left subtree
+    3. Completely in the right subtree
+
+    ✅ So we calculate all three and return the maximum.
+*/
+
 
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};

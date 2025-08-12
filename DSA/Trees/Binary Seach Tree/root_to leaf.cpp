@@ -22,10 +22,10 @@ using namespace std;
          5     10
         / \       \
        3   6       11
-      / \
-     1   4
-               \
+      / \           \
                14
+     1   4
+               
 
    ✅ Output (all root-to-leaf paths):
    Path:
