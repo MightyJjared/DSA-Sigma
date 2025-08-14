@@ -1,23 +1,25 @@
 #include <iostream>
 #include <string>
 using namespace std;
-/*
-// basic syntax to initialize and also here name cannot be called from any other function because it is private.
-class Student{
-    private:
-    string name;
-    public:
-    float cgpa;
-    void getPercentage(){
-        cout << (cgpa * 10) << "%\n";
-    }
-};
 
-int main(){
-    Student s1;
-    cout << sizeof(s1) << endl;
-    return 0;
-}*/
+// basic syntax to initialize and also here name cannot be called from any other function because it is private.
+// class Student{
+//     private:
+//     string name;
+//     public:
+//     float cgpa;
+//     void getPercentage(){
+//         cout << (cgpa * 10) << "%\n";
+//     }
+// };
+
+// int main(){
+//     Student s1;
+//     cout << sizeof(s1) << endl;
+//     s1.cgpa = 10;
+//     s1.getPercentage();
+//     return 0;
+// }
 
 //getter and setter - We can access private entities.
 class Student{

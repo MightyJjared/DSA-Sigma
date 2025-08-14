@@ -1,28 +1,28 @@
 #include <iostream>
 #include <string>
 using namespace std;
-/*
-class Complex{
-    int real;
-    int imaginary;
-    public:
-    Complex(int r, int i){
-        real = r;
-        imaginary = i;
-    }
 
-    void ShowNumber(){
-        cout << real << " + " << imaginary << "i\n";
-    }
-};
-int main(){
-    Complex c1(1,2);
-    Complex c2(3,4);
+// class Complex{
+//     int real;
+//     int imaginary;
+//     public:
+//     Complex(int r, int i){
+//         real = r;
+//         imaginary = i;
+//     }
 
-    c1.ShowNumber();
-    c2.ShowNumber();
-    return 0;
-}*/
+//     void ShowNumber(){
+//         cout << real << " + " << imaginary << "i\n";
+//     }
+// };
+// int main(){
+//     Complex c1(1,2);
+//     Complex c2(3,4);
+
+//     c1.ShowNumber();
+//     c2.ShowNumber();
+//     return 0;
+// }
 
 
 class Complex{
@@ -51,5 +51,6 @@ int main(){
 
     c1.ShowNumber();
     c2.ShowNumber();
+    c1+c2;
     return 0;
 }
