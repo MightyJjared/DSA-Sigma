@@ -2,11 +2,16 @@
 #include <map>
 using namespace std;
 
-// Two types of maps
-// 2 - ordered maps in this self balancing binary trees are used and time complexity is O(logn) for
-// insert, delete, search.
-// if we want to maintain order in maps we will use maps else unordered map.
-// here the order in for loop will be ascending order based upon key
+// map in C++
+// -----------------------------------------------------------
+// 1. It stores elements in the form of key-value pairs (unique keys).
+// 2. Internally, it uses a **balanced binary search tree** (usually Red-Black Tree).
+// 3. Time complexity of insert, erase, and find is O(log n).
+// 4. Elements are always stored in **sorted order of keys**.
+// 5. Keys must be unique, but values can be duplicated.
+// 6. Provides ordered traversal of elements using iterators.
+// 7. Useful when both fast lookups and maintaining key order are important.
+
 
 int main(){
     map<string, int> m;

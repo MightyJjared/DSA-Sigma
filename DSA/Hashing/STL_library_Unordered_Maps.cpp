@@ -2,11 +2,16 @@
 #include <unordered_map>
 using namespace std;
 
-// Two types of maps
-// 1 - unordered maps in this internally hast table are used and O(1) is the avergae time complexity for 
-// insert, delete, search.
-// 2 - ordered maps in this self balancing binary trees are used and time complexity is O(logn) for
-// insert, delete, search.
+// unordered_map in C++
+// -----------------------------------------------------------
+// 1. It stores elements in the form of key-value pairs (unique keys).
+// 2. Internally, it uses a **hash table**.
+// 3. Average time complexity of insert, erase, and find is O(1).
+// 4. Worst case (due to hash collisions) can degrade to O(n).
+// 5. The order of elements is not maintained (unlike std::map which is ordered).
+// 6. Keys must be unique, but values can be duplicated.
+// 7. Provides very fast lookups when key ordering is not important.
+
 
 int main(){
     unordered_map<string, int> m;

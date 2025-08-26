@@ -1,21 +1,20 @@
 #include <iostream>
-#include <unordered_set>
+#include <set>
 using namespace std;
 
-// unordered_set in C++
+// set in C++
 // -----------------------------------------------------------
 // 1. It stores unique elements (no duplicates).
-// 2. Internally, it uses a **hash table** to store elements.
-// 3. Average time complexity of insert, erase, and find is O(1).
-// 4. In the worst case (when many elements collide to the same bucket),
-//    the time complexity can degrade to O(n).
-// 5. The order of elements is not maintained (unlike std::set which is ordered).
-// 6. Duplicate insertions are ignored silently.
-// 7. It is useful when fast lookups, insertions, and deletions are needed 
-//    without caring about the ordering of elements.
+// 2. Internally, it uses a **balanced binary search tree** (Red-Black Tree).
+// 3. Time complexity of insert, erase, and find is O(log n).
+// 4. Elements are always stored in **sorted order** (ascending by default).
+// 5. Duplicate insertions are ignored silently.
+// 6. Provides ordered iteration over elements.
+// 7. Useful when ordering of elements matters along with uniqueness.
+
 
 int main(){
-    unordered_set<int> s;
+    set<int> s;
 
     s.insert(1);
     s.insert(9);
