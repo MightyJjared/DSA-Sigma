@@ -1,10 +1,10 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 int main(){
-    int n;
-    cout << "Enter n value : ";
-    cin >> n;
-    cout << n << endl;
+    priority_queue<int> pq;
+    pq.push(1);
+    cout << pq.top() << endl;
     return 0;
 }

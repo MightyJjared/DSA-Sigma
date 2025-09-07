@@ -40,7 +40,7 @@ int main(){
 //     return 0;
 // }
 
-//here max heap will be build based upon in value
+// here max heap will be build based upon in value
 // struct comparepair{
 //     bool operator () (pair<string, int> &p1, pair<string, int> &p2){
 //         return p1.second < p2.second;

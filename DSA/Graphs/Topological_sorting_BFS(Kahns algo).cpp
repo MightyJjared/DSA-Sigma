@@ -18,7 +18,11 @@ Approach (Kahn’s Algorithm / BFS):
 4. If any neighbor’s in-degree becomes 0, push it into the queue.
 This ensures nodes are processed only after all their prerequisites are handled.
 
-
+Note:
+- This algorithm only works on DAGs (Directed Acyclic Graphs).
+- If a cycle exists, not all vertices will reach in-degree 0 → 
+  the queue will become empty before processing all nodes, 
+  meaning topological ordering is impossible.
 Approach:
 
 
