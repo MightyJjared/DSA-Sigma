@@ -71,7 +71,7 @@ class Graph{
     void prim(int src){
         vector<bool> mst(v,false); // tracks whether a vertex is already in MST
         // Min-heap priority queue storing (weight, vertex)
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int,int>>> pq;//(dist,vertex)
 
         pq.push(make_pair(0,src)); // Start with source having 0 cost
         int ans =0; // store final MST weight
