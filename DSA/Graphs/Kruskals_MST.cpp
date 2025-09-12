@@ -4,6 +4,30 @@
 #include <vector>
 using namespace std;
 
+/*
+This program implements Kruskal's Algorithm to find the Minimum Spanning Tree (MST) of a graph.
+
+1. We represent the graph using an edge list (class `edge` stores u, v, and wt).
+2. The `Graph` class maintains:
+   - A list of edges.
+   - DSU (Disjoint Set Union) arrays: `parent` and `rank` to efficiently detect cycles.
+3. `addedge(u, v, wt)` adds an edge to the graph.
+4. `find(x)` implements DSU "find with path compression" (to get representative parent of a node).
+5. `unionByRank(u, v)` unites two sets using union by rank heuristic (keeps tree shallow).
+6. `kruskal()`:
+   - Sorts all edges in increasing order of weight.
+   - Iterates through edges:
+       - For each edge (u, v), find the parent of u and v using DSU.
+       - If parents are different (`if(parU != parV)`), that means u and v belong to different sets → adding this edge will not form a cycle.
+         So, include this edge in MST and union their sets.
+       - Otherwise, skip (to avoid cycles).
+   - Keep adding edges until MST is formed.
+   - Prints the final minimum cost of MST.
+
+Condition explained:
+`if(parU != parV)` → ensures we only add edges that connect two different connected components. 
+If they were the same (`parU == parV`), then adding that edge would create a cycle, which MST must avoid.
+*/
 class edge{
     public:
     int u;
