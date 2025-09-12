@@ -96,7 +96,7 @@ public:
                 // Skip the edge to parent (don’t go back immediately)
                 continue;
             } 
-            else if (!visited[itr]) {
+            else if (visited[itr] == false) {
                 // Tree edge (not visited yet)
                 helper(itr, discovery_time, lowTime, visited, time, src);
 
@@ -108,7 +108,7 @@ public:
                     cout << "Bridge is : " << src << "----" << itr << endl;
                 }
             } 
-            else {
+            else if(visited[itr] == true){
                 // Back edge (already visited neighbor, not parent)
                 lowTime[src] = min(lowTime[src], discovery_time[itr]);
             }
