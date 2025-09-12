@@ -138,8 +138,6 @@ int main() {
     graph.addedge(0,3);
     graph.addedge(1,2);
     graph.addedge(3,4);
-    graph.addedge(3,5);
-    graph.addedge(4,5);
 
     graph.tarjan();
 
