@@ -5,6 +5,8 @@
 #include <stack>
 using namespace std;
 // see striver for explanation
+// in this version we are using vector<int adj[k] to store graph connections istead of list
+// it is a special type of vetor where each index itself is a vector;
 /*
 LeetCode 269: Alien Dictionary
 ---------------------------------------------
