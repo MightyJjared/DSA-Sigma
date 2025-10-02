@@ -21,12 +21,12 @@ public:
         }
 
         // pick case
-        int current_maximum1 = helper(n-2, nums) + nums[n];
+        int pick = helper(n-2, nums) + nums[n];
 
         // not pick case
-        int current_maximum2 = helper(n-1,nums);
+        int not_pick = helper(n-1,nums);
         
-        return max(current_maximum1, current_maximum2);
+        return max(pick, not_pick);
 
     }
 
