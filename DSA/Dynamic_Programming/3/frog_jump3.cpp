@@ -14,8 +14,10 @@ int frogJumpTab(int n, vector<int> &heights) {
 
     // fill dp array iteratively
     for(int i = 1; i < n; i++){
+
         int second = INT16_MAX;
         int first = prev1 + abs(heights[i] - heights[i-1]);
+        
         if(i > 1){
             second = prev2 + abs(heights[i] - heights[i-2]);
         }

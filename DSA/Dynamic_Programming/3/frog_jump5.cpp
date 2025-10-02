@@ -6,7 +6,7 @@ using namespace std;
 
 // tabulation
 
-int frogJumpTab(int n, vector<int> &heights) {
+int frogJumpTab(int n, vector<int> &heights, int k) {
     vector<int> dp(n, 0);
 
     // base case
@@ -14,14 +14,14 @@ int frogJumpTab(int n, vector<int> &heights) {
 
     // fill dp array iteratively
     for(int i = 1; i < n; i++){
-
-        int second = INT16_MAX;
-        int first = dp[i-1] + abs(heights[i] - heights[i-1]);
-        
-        if(i > 1){
-            second = dp[i-2] + abs(heights[i] - heights[i-2]);
+        int minSteps = INT16_MAX;
+        for(int j = 1; j <=k; j++){
+            if(i-j >= 0){
+                int current = dp[i-j] + abs(heights[i] - heights[i-j]);
+                minSteps = min(minSteps, current); 
+            }
         }
-        dp[i] = min(first, second);
+        dp[i] = minSteps;
     }
 
     return dp[n-1];
@@ -29,8 +29,9 @@ int frogJumpTab(int n, vector<int> &heights) {
 
 int main() {
     int n = 4;
+    int k = 4;
     vector<int> heights = {10,20,30,10};
 
-    cout << frogJumpTab(n, heights) << endl;
+    cout << frogJumpTab(n, heights, k) << endl;
     return 0;
 }
