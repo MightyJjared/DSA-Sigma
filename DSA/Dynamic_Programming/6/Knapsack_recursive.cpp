@@ -42,21 +42,24 @@ int knapsack(int W, vector<int> &wt, vector<int> &val, int n) {
         return 0;
     }
 
-    // Case 1: If the weight of the current item is more than capacity,
-    // we cannot include it. So just move to the next item.
-    if (wt[n-1] > W) {
-        return knapsack(W, wt, val, n-1);
+    // Case 1: Otherwise, we have two choices:
+    if (wt[n-1] <= W) {
+      //  (a) Exclude the current item
+      int exclude = knapsack(W, wt, val, n-1);
+
+      //  (b) Include the current item (reduce capacity and add its value)
+      int include = val[n-1] + knapsack(W - wt[n-1], wt, val, n-1);
+
+      // Take the maximum of include and exclude
+      return max(include, exclude);
     }
 
-    // Case 2: Otherwise, we have two choices:
-    //  (a) Exclude the current item
-    int exclude = knapsack(W, wt, val, n-1);
-
-    //  (b) Include the current item (reduce capacity and add its value)
-    int include = val[n-1] + knapsack(W - wt[n-1], wt, val, n-1);
-
-    // Take the maximum of include and exclude
-    return max(include, exclude);
+    // Case 2: If the weight of the current item is more than capacity,
+    // we cannot include it. So just move to the next item.
+    else{
+      return knapsack(W, wt, val, n-1);
+    }
+    
 }
 
 int main() {
