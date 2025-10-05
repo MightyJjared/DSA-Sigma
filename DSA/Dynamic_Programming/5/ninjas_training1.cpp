@@ -8,7 +8,10 @@ using namespace std;
 // Ninja Training Problem:
 // You have `n` days and 3 tasks each day. Each task gives certain points.
 // You cannot perform the same task on consecutive days. Find the maximum total points you can earn.
-// Example: points = {{2,1,3},{3,4,6},{10,1,6},{8,3,7}}
+// Example: points = {{2,1,3},
+//                    {3,4,6},
+//                   {10,1,6},
+//                    {8,3,7}}
 // One optimal sequence: Day0-task2(3) -> Day1-task1(4) -> Day2-task0(10) -> Day3-task2(7) = Total 24 points
 
 

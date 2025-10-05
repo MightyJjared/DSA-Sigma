@@ -12,7 +12,7 @@ class Solution {
 public:
     int helper(int m, int n, vector<vector<int>>& grid, vector<vector<int>>& dp) {
         if(m < 0 || n < 0){
-            return INT_MAX;
+            return 1e9;
         }
         if(m ==0 && n== 0){
             return grid[0][0];
@@ -21,15 +21,9 @@ public:
             return dp[m][n];
         }
 
-        int up = helper(m-1,n,grid,dp);
-        int left = helper(m,n-1,grid,dp);
+        int up = helper(m-1,n,grid,dp) + grid[m][n];
+        int left = helper(m,n-1,grid,dp) + grid[m][n];
 
-        if (up != INT_MAX){
-            up += grid[m][n];
-         } 
-        if (left != INT_MAX){
-            left += grid[m][n];
-        }
 
         dp[m][n] = min(up,left);
         return dp[m][n];
