@@ -48,8 +48,11 @@ public:
                     for(int a = -1; a <= 1; a++){
                         for(int b = -1; b <= 1; b++){
                             int value = 0;
-                            if(j1+a < m && j2+b < m && j1 +a >= 0 && j2+b >= 0){ // just added t                                                                   this exa out of boounds check
-                                value = dp[i+1][j1+a][j2+b]; 
+                            if(j1+a < m && j2+b < m && j1 +a >= 0 && j2+b >= 0){ // just added this extar out of bound                                                                 this exa out of boounds check
+                                value = dp[i+1][j1+a][j2+b];                   // edge case 
+                            }
+                            else{
+                                value = -1e9; // so tht it wont be considered in maximum;
                             }
                             if(j1 == j2){
                                value += grid[i][j1];
