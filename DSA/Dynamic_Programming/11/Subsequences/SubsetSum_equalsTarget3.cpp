@@ -14,7 +14,9 @@ public:
             dp[i][0] = true;
         }
 
-        dp[0][nums[0]] = true; // 2 base case
+        if(nums[0] <= target){ // 2 base case
+            dp[0][nums[0]] = true;
+        } 
 
         // body
         for(int index =1; index <n; index++){ // 2 for loops because 2 variable ie index, target
