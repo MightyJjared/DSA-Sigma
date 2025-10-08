@@ -1,35 +1,68 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
 
-int uniquePaths(int m, int n) {
-    vector<vector<int>> dp(m, vector<int>(n, 1));
-    
-
-    for(int i =0; i <m; i++){
-        for(int j =0; j< n; j++){
-            if(i == 0 && j == 0){
-                dp[i][j] = 1;
+// Function to count subsets with sum = K
+int helper(int n, int sum, vector<int> &nums, vector<int> &temp)
+{
+    if (sum == 0)
+    { // base case1
+        temp.push_back(nums[n]);
+        for (int itr : temp){
+            cout << itr << " ";
+        }
+        cout << endl;
+        temp.pop_back();
+        return 1;
+    }
+    if (n == 0)
+    { // base case 2
+        if (nums[n] == sum)
+        {
+            temp.push_back(nums[n]);
+            for (int itr : temp){
+                cout << itr << " ";
             }
-            else{
-                int up =0; 
-                int left =0;
-                if(i>0){
-                    up = dp[i-1][j];
-                }
-                if(j >0){
-                    left = dp[i][j-1];
-                }
-                dp[i][j] = up + left;
-            }
+            cout << endl;
+            temp.pop_back();
+            return 1;
+        }
+        else
+        {
+            return 0;
         }
     }
-    return dp[m-1][n-1];
+
+    int not_pick = helper(n - 1, sum, nums, temp);
+
+    int pick = 0;
+    if (nums[n] <= sum)
+    {
+        temp.push_back(nums[n]);
+        pick = helper(n - 1, sum - nums[n], nums, temp);
+        temp.pop_back();
+    }
+
+    return pick + not_pick;
 }
 
-int main() {
-    int m = 3, n = 3;
-    cout << "Unique paths for " << m << "x" << n << " grid: " 
-         << uniquePaths(m, n) << endl;
+int countSubsetsWithSumK(vector<int> &nums, int target)
+{
+    vector<int> temp;
+    int sum = 5;
+    int n = nums.size();
+    return helper(n - 1, sum, nums, temp);
+}
+
+int main()
+{
+    // Example input
+    int n = 5, sum = 5;
+    vector<int> nums = {1, 2, 3, 2, 1};
+
+    int result = countSubsetsWithSumK(nums, sum);
+    cout << "Count of subsets with sum " << sum << " = " << result << "\n";
+
     return 0;
 }
