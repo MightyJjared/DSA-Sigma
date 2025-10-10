@@ -20,7 +20,7 @@ public:
 
         // body
         for(int index =1; index <n; index++){ // 2 for loops because 2 variable ie index, target
-            for(int k = 1; k < target+1; k++){
+            for(int k = 0; k < target+1; k++){
                 
                 bool not_pick = dp[index-1][k];  // this is completley copy past from memoization till end of loop
 
