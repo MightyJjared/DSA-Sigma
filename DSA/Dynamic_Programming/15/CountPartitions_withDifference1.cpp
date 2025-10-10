@@ -32,25 +32,8 @@ Explanation:
    - Each zero can be included or excluded freely.
    - Multiply the final count by 2^number_of_zeros to account for all possibilities.
 */
-/*
-IMPORTANT NOTE - here we are not using below formula:
 
-    sum(S1) - sum(S2) = diff
 
-Explanation:
-
-1. Let totalSum = sum of all elements in nums.
-2. Let sum(S1) = s1 and sum(S2) = s2
-   Then:
-       s1 - s2 = diff
-       s1 + s2 = totalSum
-   Adding both equations: 2*s1 = totalSum + diff
-   => s1 = (totalSum + diff) / 2
-   BECAUSE THIS formula because when in countPartitionsWithDiff we are calling dp[n-1][s1] here s1 is 
-   totalsum + difference/ 2 and when we are calulating dp in helper we are only calculating its colums till totalsum
-   so totalsum + diff might go out of bounds.
-   whereas se = totalsum - diff / 2 which is always inbounds
-*/
 class Solution {
 public:
     void helper(vector<int> &nums, int sum, vector<vector<int>> &dp){
@@ -102,7 +85,7 @@ public:
 };
 
 int main() {
-    vector<int> nums = {0, 1, 2, 3};
+    vector<int> nums = {1, 1, 2, 3};
     int diff = 1;
 
     Solution sol;
