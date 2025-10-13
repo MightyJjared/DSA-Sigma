@@ -84,6 +84,7 @@ public:
 
 int main() {
     vector<int> nums = {1, 1, 2, 3};
+    
     int diff = 1;
 
     Solution sol;
