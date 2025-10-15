@@ -7,11 +7,11 @@ using namespace std;
 class Solution {
 public:
     int helper(int index, int amount, vector<int>& coins, vector<vector<int>> &dp){
-        for(int i = 0; i <= index; i++){
+        for(int i = 0; i <= index; i++){ // base case1 ( This base case is optional it doesnt change answer)
             dp[i][0] = 1;
         }
         
-        for(int k = 0; k <= amount; k++){
+        for(int k = 0; k <= amount; k++){ // 2 base case
             if(k % coins[0] == 0){
                 dp[0][k] = 1;
             }

@@ -23,10 +23,10 @@ Explanation: There are four ways to make up amount 5:
 class Solution {
 public:
     int helper(int n, int sum, vector<int> &nums, vector<vector<int>> &dp){
-        if(sum == 0){ // base case1
+        if(sum == 0){ // base case1 ( This base case is optional it doesnt change answer)
             return 1;
         }
-        if (n == 0) {
+        if (n == 0) { // 2 base case
             if (sum % nums[0] == 0) {
                 return 1;
             } else {
