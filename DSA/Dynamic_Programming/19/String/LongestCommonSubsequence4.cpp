@@ -20,7 +20,7 @@ public:
         int i1 = text1.size();
         int i2 = text2.size();
 
-        vector<vector<int>> dp(i1+1, vector<int>(i2+1, -1));
+        vector<vector<int>> dp(i1+1, vector<int>(i2+1, 0));
 
         for(int i =0; i <= i1; i++){ //base case
             dp[i][0] = 0;

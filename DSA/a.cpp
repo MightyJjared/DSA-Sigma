@@ -47,8 +47,12 @@ public:
         string temp;
         string ans;
         int result = helper(i1, i2, text1, text2, dp, temp, ans);
-        reverse(ans.begin(), ans.end());
-        cout << ans << endl;
+        for(int i =0; i<= i1; i++){
+            for(int j =0; j <= i2; j++){
+                cout << dp[i][j] << " ";
+            }
+            cout << endl;
+        }
         return result;
     }
 };
@@ -61,7 +65,7 @@ int main() {
     string text2 = "ace";
 
     int result = sol.longestCommonSubsequence(text1, text2);
-    cout << "Length of LCS = " << result << endl;
+    //cout << "Length of LCS = " << result << endl;
     
 
     return 0;
