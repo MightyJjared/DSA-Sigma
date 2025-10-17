@@ -5,7 +5,8 @@
 using namespace std;
 
 // memoization
-
+// we are printing the Longest Common Subsequence, this is just a time pass method we are using actual approach is in 
+// 2 part
 /*
 🔹 LeetCode Reference: 1143. Longest Common Subsequence
 🔹 Problem Explanation:
