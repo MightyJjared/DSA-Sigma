@@ -4,6 +4,8 @@
 #include <algorithm>
 using namespace std;
 
+//// memoization 
+// LCA function is copied as it is from previous file
 class Solution {
 public:
     /*

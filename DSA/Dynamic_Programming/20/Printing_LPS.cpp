@@ -5,6 +5,7 @@
 using namespace std;
 
 // tabulation 
+// we just copied LCA printing function fro previous file as it is
 // LCA function is copied as it is from previous file
 /*
     LeetCode 516: Longest Palindromic Subsequence
@@ -43,7 +44,25 @@ public:
                 }
             }
         }
-        return dp[i][j];       
+        int answer = dp[i][j];
+        int length = dp[i][j];
+        string ans;
+        while(i > 0 && j > 0){
+            if(s[i-1] == t[j-1]){
+                ans += s[i-1];
+                i--;
+                j--;
+            }
+            else if(dp[i-1][j] > dp[i][j-1]){
+                i--;
+            }
+            else{
+                j--;
+            }
+        }
+        reverse(ans.begin(), ans.end());
+        cout << "Longest palndrome is : " << ans << endl;
+        return answer;
     }
 
     int longestPalindromeSubseq(string s) {
@@ -52,14 +71,23 @@ public:
         int i = s.size();
         int j = t.size();
         vector<vector<int>> dp(i+1, vector<int>(j+1, 0));
-        return LCA(i, j, s, t, dp);
+        int ans = LCA(i, j, s, t, dp);
+
+        for(int n = 0; n<= i; n++){
+            for(int m =0; m <= j; m++){
+                cout << dp[n][m] << " ";
+            }
+            cout << endl;
+        }
+
+        return ans;
     }
 };
 
 int main() {
     Solution sol;
     string s = "bbbab";
-    cout << "Longest Palindromic Subsequence Length = " 
-         << sol.longestPalindromeSubseq(s) << endl;
+    int ans = sol.longestPalindromeSubseq(s);
+    cout << "Longest Palindromic Subsequence Length = " << ans << endl;
     return 0;
 }
