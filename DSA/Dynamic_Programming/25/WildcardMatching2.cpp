@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-// memoization (with '*' and '?' wildcards)
+// memoization 
 /*
 🔹 LeetCode Reference: 44. Wildcard Matching
 -------------------------------------------------
@@ -53,7 +53,7 @@ public:
             return dp[i][j] = helper(i-1, j-1, s, p, dp);
         }
 
-        else if(p[j] == '*'){
+        if(p[j] == '*'){
             bool case1 = helper(i-1, j, s, p, dp);
             bool case2 = helper(i , j-1, s, p, dp);
             if(case1 == true || case2 == true){
