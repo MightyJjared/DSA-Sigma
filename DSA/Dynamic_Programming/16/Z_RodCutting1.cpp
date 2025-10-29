@@ -32,7 +32,7 @@ public:
         if(index == 0){
             return N * price[0];
         }
-        int rod_length = index+1;
+        int rod_length = index+1; // rod_lenght = W
 
         int notPick = helper(index-1, N, price);
 

@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-// this is my own method next part is strivers method
 // NOTE - Subsequence and substring are different
 // tabulation
 

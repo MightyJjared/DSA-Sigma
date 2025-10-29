@@ -33,8 +33,8 @@ public:
         int index = 0;
         for(int i =0; i <n; i++){
             for(int prev = 0; prev < i; prev++){
-                if(nums[prev] < nums[i]){
-                    dp[i] = max(1 + dp[prev], dp[i];
+                if(nums[prev] < nums[i] && dp[i] < 1 + dp[prev]){
+                    dp[i] = 1 + dp[prev];
                     hash[i] = prev;
                 }
             }

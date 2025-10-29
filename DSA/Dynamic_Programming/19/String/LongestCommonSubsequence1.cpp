@@ -44,7 +44,7 @@ public:
         int match = -1e9;
         int not_match = -1e9;
         if(text1[i1] == text2[i2]){
-             return match = 1  + helper(i1-1, i2-1, text1, text2);
+            return match = 1  + helper(i1-1, i2-1, text1, text2);
         }
         
         // only executed if (characters don't match)

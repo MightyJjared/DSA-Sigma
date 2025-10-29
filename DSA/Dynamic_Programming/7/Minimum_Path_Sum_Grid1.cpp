@@ -14,22 +14,16 @@ public:
 
     int helper(int m, int n, vector<vector<int>>& grid) {
         if(m < 0 || n < 0){
-            return INT_MAX;
+            return 1e9;
             }
         if(m ==0 && n== 0){
             return grid[0][0];
             }    
     
-        int up = helper(m-1, n, grid);
-        int left = helper(m, n-1, grid);
+        int up = grid[m][n] + helper(m-1, n, grid);
+        int left = grid[m][n] +  helper(m, n-1, grid);
 
-         if (up != INT_MAX){
-            up += grid[m][n];
-         } 
-        if (left != INT_MAX){
-            left += grid[m][n];
-        }
-
+                 
         return min(up, left);
 }
 

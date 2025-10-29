@@ -7,7 +7,7 @@ using namespace std;
 // This is house robber 2 in leetocde 213 here everything is same except the houses are circular soonly change is
 // in the answer the first and last index cant be present simaltaneously because they are also neighbours.
 // so what we did is we copied the rob_helper from house robber1 and in the rob function we created 2 vector,
-// one include all elemnts except the first and the second one doesnt include th last elemnet,
+// one include all elemnts except the first and the second one doesnt include the last elemnet,
 // so our logic is we will pass both of these to rob helper and the answer will be maximum of thpse 2.
 // we also added 2 edge caes in rob helper
 class Solution {

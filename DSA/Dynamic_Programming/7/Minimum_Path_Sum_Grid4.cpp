@@ -4,7 +4,7 @@
 #include <climits>
 using namespace std;
 
-// tabulation
+// tabulation (space optimized)
 // LeetCode 64: Minimum Path Sum
 // Explain: You need to go from top-left to bottom-right of a grid,
 // moving only right or down, with minimum sum of path.
@@ -19,33 +19,35 @@ using namespace std;
 
 class Solution {
 public:
-    int helper(int m, int n, vector<vector<int>>& grid, vector<vector<int>>& dp) {
+    int helper(int m, int n, vector<vector<int>>& grid) {
+        vector<int> prev (n, 0);
         for(int i =0; i<m; i++){
+            vector<int> current (n, 0);
             for(int j = 0; j < n; j++){
                 if(i == 0 && j == 0){
-                    dp[i][j] = grid[i][j];
+                    current[j] = grid[i][j];
                 }
                 else{
                     int up = INT_MAX;
                     int left = INT_MAX;
                     if(i > 0){
-                        up = dp[i-1][j];
+                        up = prev[j];
                     }
                     if(j > 0){
-                        left = dp[i][j-1];
+                        left = current[j-1];
                     }
-                    dp[i][j] = min(up, left) + grid[i][j];
+                    current[j] = min(up, left) + grid[i][j];
                 }
             }
+            prev = current;
         }
-        return dp[m-1][n-1];
+        return prev[n-1];
     }
 
     int minPathSum(vector<vector<int>>& grid) {
         int m = grid.size();
         int n = grid[0].size();
-        vector<vector<int>> dp(m, vector<int>(n, 0));
-        return helper(m, n, grid, dp);
+        return helper(m, n, grid);
     }
 };
 

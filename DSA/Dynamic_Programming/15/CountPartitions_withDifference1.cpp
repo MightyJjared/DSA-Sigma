@@ -75,7 +75,7 @@ public:
         if(totalsum - diff < 0){ // base case 1 - it cant be negative (see question for formula we derived)
             return false;
         }
-        if((totalsum - diff) % 2 == 1){ // base case 2 - it cant be odd number because we are dividig by 2
+        if((totalsum - diff) % 2 == 1){ // base case 2 - it cant be odd number because we are dividing by 2
             return false;
         }
         
