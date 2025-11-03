@@ -23,7 +23,7 @@ void maxarea(vector<int> height){
             s.pop();
         }
         if(s.size() == 0){
-            nextSmallerLeft[i] = -1;
+           nextSmallerLeft[i] = -1;
         }
         else{
             nextSmallerLeft[i] = s.top();
