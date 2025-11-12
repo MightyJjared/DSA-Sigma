@@ -41,7 +41,7 @@ int helper(int i, int j, vector<int> &arr){
                     + helper(k+1, j, arr);
         
         minimum = min(steps, minimum);
-    }
+    } 
     return minimum;
 }
 

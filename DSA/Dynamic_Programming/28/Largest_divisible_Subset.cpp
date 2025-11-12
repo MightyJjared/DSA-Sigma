@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// we copied the exact code of longest_increaing _subsequence(printing) and did 2 changes first befor edoing any
+// we copied the exact code of longest_increaing _subsequence(printing) and did 2 changes first before doing any
 // operations on nums we are sorting(ascending order) it for our condition to work, and inside the nested loop
 // we are changing the nums[prev] < nums[i] to nums[i] % nums[prev] == 0 as here we are not finding largets
 // increasing subsequuence rather largest divisible subset
@@ -32,7 +32,7 @@ public:
         int last_index = 0;
         int maximum = 1;
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             for (int prev = 0; prev < i; prev++) {
                 if (nums[i] % nums[prev] == 0 && 1 + dp[prev] > dp[i]) {
                     dp[i] = 1 + dp[prev];

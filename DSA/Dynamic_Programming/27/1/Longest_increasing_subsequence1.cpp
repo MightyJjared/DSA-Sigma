@@ -19,11 +19,14 @@ public:
         if(index == n){
             return 0;
         }
+
         int not_pick = helper(index+1, prev, nums, n);
+
         int pick = -1e9;
         if(prev == -1 || nums[index] > nums[prev]){
             pick = 1 + helper(index+1,index,nums, n);
         }
+        
         return max(pick, not_pick);
     }
     int lengthOfLIS(vector<int>& nums) {

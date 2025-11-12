@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// for explanation see striver dp 47
+// for explanation see striver dp 47 leetcode 673
 class Solution {
 public:
     int findNumberOfLIS(vector<int>& nums) {

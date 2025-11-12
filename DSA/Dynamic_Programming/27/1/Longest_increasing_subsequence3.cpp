@@ -8,7 +8,9 @@ here inside the nested loop we have copy pasted and did one additional change ie
 dp[][prev+1] as we cant store -1 index in array
 also in the nested loop the 2 loop is going backwards ie from index-1 to -1 we can do reevrse also ie from -1
 index-1 and chnage nothing else inside or outside it and it will still work
-// also in base case since we are returning 0and here the dp is initialized as 0 no need to write the basecase
+// also in base case since we are returning 0 and here the dp is initialized as 0 no need to write the basecase
+// also the 2 loop in nested loop is starting from index -1 because thing logically it is prev index so it wiil
+be index -1
 */
 /*
 🔹 LeetCode Reference: 300. Longest Increasing Subsequence

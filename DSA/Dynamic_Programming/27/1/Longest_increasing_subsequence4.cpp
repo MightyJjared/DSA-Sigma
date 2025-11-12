@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// tabulation spce optimized
+// tabulation space optimized
 /*
 🔹 LeetCode Reference: 300. Longest Increasing Subsequence
 🔹 Problem Explanation:

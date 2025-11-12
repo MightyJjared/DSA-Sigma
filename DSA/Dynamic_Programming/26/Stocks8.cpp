@@ -52,3 +52,4 @@ int main() {
     cout << "Maximum Profit: " << s.maxProfit(prices) << endl;
     return 0;
 }
+ 

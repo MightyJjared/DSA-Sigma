@@ -43,7 +43,7 @@ public:
 
 int main() {
     Solution sol;
-    vector<int> nums = {3, 1, 5, 8};
+    vector<int> nums = {1 ,3, 1, 5, 8, 1};
 
     cout << "Maximum coins: " << sol.maxCoins(nums) << endl;
 

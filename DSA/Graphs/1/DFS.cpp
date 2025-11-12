@@ -4,6 +4,7 @@
 #include <queue>
 using namespace std;
 
+// time complexity and space complexity = O(v + E) where is Edges
 // this is for undirected and unweighted graph
 // Graph structure (Undirected & Unweighted)
 //
@@ -26,9 +27,7 @@ using namespace std;
 // 3 -- 5
 // 4 -- 5
 // 5 -- 6
-//
-// BFS starting from 0 →  0 1 2 3 4 5 6
-//
+
 
 class Graph{
     int v;
@@ -57,26 +56,21 @@ class Graph{
         }
     }
 
-    void bfs(){
-        queue<int> q;
+    void dfs_helper(int v, vector<bool> &visited){
+        visited[v] = true;
+        cout << v << " ";
 
-        vector<bool> visited(v, false);
-        q.push(0);
-        visited[0] = true;
-
-        while(q.size() > 0){
-            int u = q.front();
-            q.pop();
-            cout << u << " ";
-
-            list<int> neighbours = l[u];
-            for(auto itr : neighbours){
-                if(visited[itr] == false){
-                    visited[itr] = true;
-                    q.push(itr);
-                }
+        list<int> neighbours = l[v];
+        for(auto itr : neighbours){
+            if(visited[itr] == false){
+                dfs_helper(itr, visited);
             }
         }
+    }
+
+    void dfs(){
+        vector<bool> visited (v, false);
+        dfs_helper(0, visited);
         cout << endl;
     }
 };
@@ -93,7 +87,7 @@ int main(){
     graph.addedge(4,5);
     graph.addedge(5,6);
 
-    graph.bfs();
+    graph.dfs();
 
     return 0;
 }
