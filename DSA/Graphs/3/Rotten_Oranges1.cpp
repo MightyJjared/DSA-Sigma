@@ -4,6 +4,7 @@
 using namespace std;
 
 // this one is preferred (reference striver g 10)
+// this can done only using bfs
 /*
 🔹 LeetCode 994: Rotting Oranges
 --------------------------------

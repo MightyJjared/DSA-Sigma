@@ -8,6 +8,7 @@ using namespace std;
 // 1 - it has unvisited neighbours
 // 2- it have visited neighbour but that neighbour is parent node so it cant be a cycle
 // 3 - it has a visited neighbour and it isnt its parent so this is the case where we can cay a cycle exists.
+// also back edge is the edge which is responsible for thegraph to become a cycle
 
 // this is for undirected and unweighted graph
 // Graph structure (Undirected & Unweighted)
@@ -62,28 +63,34 @@ class Graph{
         }
     }
 
-    bool helper(int source, int parent, vector<bool> &visited){
-        visited[source] = true;
+    
 
-        list<int> neighbour = l[source];
-        for(auto itr : neighbour){
-            if(visited[itr] == false){
-                if(helper(itr, source, visited) == true){
-                    return true;
+    bool cycle_detection(){
+        vector<bool> visited(v, false);
+        queue<pair<int, int>> q; // {current, parent}
+
+        visited[0] = true;
+        q.push({0, -1});
+
+        while(q.size() > 0){
+            int current = q.front().first;
+            int parent = q.front().second;
+
+            q.pop();
+
+            for(auto itr : l[current]){
+                if(visited[itr] == false){
+                    visited[itr] = true;
+                    q.push({itr, current});
                 }
-            }
-            else{
-                if(itr != parent){
-                    return true;
+                else{
+                    if(itr != parent){
+                        return true;
+                    }
                 }
             }
         }
         return false;
-    }
-
-    bool cycle_detection(){
-        vector<bool> visited(v, false);
-        return helper(0, -1, visited);
     }
 
 };
@@ -97,7 +104,12 @@ int main(){
     graph.addedge(1,2);
     graph.addedge(3,4);
     
-    cout << graph.cycle_detection();
+    if(graph.cycle_detection()){
+        cout << "Cycle exists";
+    }
+    else{
+        cout << "Cycle doesnt exist";
+    }
     cout << endl;
     return 0;
 }
