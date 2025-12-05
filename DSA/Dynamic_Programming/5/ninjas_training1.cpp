@@ -12,7 +12,7 @@ using namespace std;
 //                    {3,4,6},
 //                   {10,1,6},
 //                    {8,3,7}}
-// One optimal sequence: Day0-task2(3) -> Day1-task1(4) -> Day2-task0(10) -> Day3-task2(7) = Total 24 points
+// One optimal sequence: Day0-task0(2) -> Day1-task2(6) -> Day2-task0(10) -> Day3-task2(7) = Total 25 points
 
 
 class Solution {

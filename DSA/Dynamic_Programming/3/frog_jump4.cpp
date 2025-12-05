@@ -5,6 +5,12 @@
 #include <climits>
 using namespace std;
 
+// Time Complexity: O(n * k)  
+//   → For each index, we try up to k jumps, and each state is solved once.
+// Space Complexity: O(n) 
+//   → dp array + recursion stack.
+
+
 // Memoization
 /*
     Problem Reference: Coding Ninjas – "Frog Jump with K Jumps"

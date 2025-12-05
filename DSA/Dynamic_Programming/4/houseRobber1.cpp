@@ -10,11 +10,29 @@ using namespace std;
 // Example: nums = {2,7,9,3,1} -> Best is rob house1(7) + house3(3) + house5(1) = 11 
 // OR house1(7) + house3(9) = 16 (invalid since adjacent), so correct answer = 12 (2 + 9 + 1).
 
+
+/*
+IMPORTANT NOTE:
+We CANNOT use `if (n == 1) return nums[1];` as a base case.
+Why? Because for input nums = [2, 1], the correct answer is 2 (rob house 0),
+but `return nums[1]` gives 1 → WRONG ANSWER.
+
+Explanation:
+In House Robber, when n == 1 (second house), the best choice is NOT always
+to take nums[1]. We must compare BOTH options:
+    - rob first house      → nums[0]
+    - rob second house     → nums[1]
+so the correct base case should be:
+    if (n == 1) return max(nums[0], nums[1]);
+
+This is why using `return nums[1]` is incorrect and fails cases like [2,1].
+*/
+
 class Solution {
 public:
     int helper(int n, vector<int> &nums){
         if(n == 0){
-            return nums[n];
+            return nums[0];
         }
         if(n < 0){
             return 0;

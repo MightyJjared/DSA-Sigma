@@ -5,6 +5,8 @@
 #include <climits>
 using namespace std;
 // memoization
+// Time Complexity: O(n)  -> each state computed once using memoization
+// Space Complexity: O(n) -> dp array + recursion stack
 
 /*
     Problem Reference: Coding Ninjas – "Frog Jump"

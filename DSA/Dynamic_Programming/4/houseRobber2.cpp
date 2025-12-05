@@ -2,6 +2,14 @@
 #include <vector>
 using namespace std;
 
+// Time Complexity: O(n)
+//   Each index is computed once due to memoization,
+//   and every helper call does O(1) work.
+//
+// Space Complexity: O(n)
+//   dp array of size n + recursion stack depth up to n.
+
+
 // Memoization (Top-down DP)
 // LeetCode 198: House Robber
 // Question: You are given an array nums where each element represents money in a house. 
