@@ -18,7 +18,7 @@ using namespace std;
 
 int knapsack(int n, int W, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp) {
     if(n == 0){
-        if(wt[n] <= W){
+        if(W >= wt[n]){
             return val[n];
         }
         return 0;

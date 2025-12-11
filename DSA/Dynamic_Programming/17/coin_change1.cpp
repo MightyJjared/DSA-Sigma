@@ -64,3 +64,45 @@ int main() {
     cout << "Minimum coins = " << sol.coinChange(coins, amount) << endl;
     return 0;
 }
+
+/*
+Greedy Fails Example:
+---------------------
+
+Coins = {9, 6, 5, 1}
+Amount = 11
+
+Greedy Strategy:
+    Always pick the largest coin that is <= remaining amount.
+
+Step-by-step Greedy:
+1) Remaining amount = 11
+   Largest coin <= 11 is 9
+   Pick 9 → remaining amount = 11 - 9 = 2
+
+2) Remaining amount = 2
+   Largest coin <= 2 is 1
+   Pick 1 → remaining amount = 2 - 1 = 1
+
+3) Remaining amount = 1
+   Pick 1 → remaining amount = 1 - 1 = 0
+
+Total coins used by Greedy = 3  
+Combination = 9 + 1 + 1
+
+But the Optimal Solution is:
+    6 + 5 = 11
+Total optimal coins = 2
+
+Why Greedy Fails Here:
+----------------------
+Greedy picks 9 first because it is the biggest coin.
+But taking 9 is a bad choice because it forces you to use two 1-coins later.
+The better choice is to use 6 and 5 — but greedy never explores this possibility.
+
+Conclusion:
+-----------
+Greedy is not reliable for the Coin Change problem because the 
+largest coin is not always part of the optimal solution.
+Dynamic Programming is required to guarantee the minimum number of coins.
+*/
