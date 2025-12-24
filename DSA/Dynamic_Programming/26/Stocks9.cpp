@@ -25,17 +25,6 @@ public:
         vector<vector<int>> ahead(2, vector<int> (k+1, 0)); // tabulation table
         vector<vector<int>> current(2, vector<int> (k+1, 0));
 
-       for(int index =0; index <= n; index++){ // base case
-            for(int buy =0; buy <=1; buy++){
-                current[buy][0] = 0;
-            }
-        }
-
-        for(int buy =0; buy <= 1; buy++){// base case
-            for(int count =0; count <=k; count++){
-                current[buy][count] = 0;
-            }
-        }
 
         for(int index =n-1; index >= 0; index--){
             for(int buy =0; buy <= 1; buy++){
