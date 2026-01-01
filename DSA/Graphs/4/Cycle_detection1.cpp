@@ -75,7 +75,7 @@ class Graph{
             }
             else{
                 if(itr != parent){
-                    return true;
+                    return true; // true means cycle exists
                 }
             }
         }

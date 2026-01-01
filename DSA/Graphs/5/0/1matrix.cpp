@@ -35,11 +35,7 @@ public:
                 int nextrow = row + delRow[i];
                 int nextcol = col + delCol[i];
 
-                if(nextrow < n && nextrow >= 0 && nextcol <m && nextcol >= 0 && visited[nextrow][nextcol] == false && mat[nextrow][nextcol] == 0){
-                    visited[nextrow][nextcol] = true;
-                    q.push({{nextrow, nextcol}, distance+1});
-                }
-                else if(nextrow < n && nextrow >= 0 && nextcol <m && nextcol >= 0 && visited[nextrow][nextcol] == false && mat[nextrow][nextcol] == 1){
+                if(nextrow < n && nextrow >= 0 && nextcol <m && nextcol >= 0 && visited[nextrow][nextcol] == false){
                     mat[nextrow][nextcol] = distance+1;
                     visited[nextrow][nextcol] = true;
                     q.push({{nextrow, nextcol}, distance+1});
