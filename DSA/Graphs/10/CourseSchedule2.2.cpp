@@ -3,6 +3,8 @@
 #include <stack>
 using namespace std;
 // leetcode 210
+// here we are first checking if cycle exists usin isCyclic function if no then we are calculating toposort using
+// dfs way ie with stack
 /*
    Question:
    You are given 'numCourses' courses and a list of prerequisite pairs.
