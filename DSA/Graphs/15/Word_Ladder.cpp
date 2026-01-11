@@ -8,6 +8,8 @@
 //   (to avoid revisiting).
 // - BFS guarantees the shortest path, so when we reach endWord, 
 //   the corresponding step count is our answer.
+// Time Complexity - N * Length of word * 26 * N where N is size of word list and another N is worst case of
+// another set
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -31,9 +33,9 @@ public:
                     if (c != p.first[i]) {
                         string newword = p.first;
                         newword[i] = c;
-                        if (s.find(newword) != s.end()) {
+                        if (s.find(newword) != s.end()) {// we found a match in set
                             q.push(make_pair(newword, p.second + 1));
-                            s.erase(newword);
+                            s.erase(newword); 
                         }
                     }
                 }
