@@ -4,6 +4,9 @@
 #include <limits>
 using namespace std;
 
+// here this is a way to perofrm shortest distance for each node from a source node like dijakstras , here the logic
+// is we will first perform toposort then create a dist array and mark the source node distance as 0 and 
+// all others as 1e9 then we remove each elemnt from stack and perform edge relation on its neighbours
 /*
 G-27: Shortest Path in a Directed Acyclic Graph (DAG)
 
