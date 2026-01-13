@@ -9,6 +9,8 @@ using namespace std;
 
 // Here this is giving memory exceed in leetcode but will work absolutely fine in interview
 // aslo this is extremeely ahrd so to understand the intiuition watch striver graph lecture 30
+// now he gave a leetocde oriented solution in next lecture but he said dont try this in interview as
+// it not intitutive , do this in interview
 
 class Solution {
 public:
