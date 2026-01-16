@@ -11,6 +11,21 @@ using namespace std;
 // to implement this we are using edge list and not adjacency list.
 // we are using bsf to implement, time complexity = O(V+E * log V)
 
+// Time Complexity:
+// Each extract-min from the priority queue takes O(log V) and happens V times → V log V.
+// Each edge relaxation may push into the queue, costing O(log V) and happens E times → E log V.
+// Total = V log V + E log V = (V + E) log V.
+// Since E ≥ V for connected graphs, it simplifies to O(E log V).
+// Valid for graphs with non-negative edge weights.
+
+// Space Complexity:
+// dist[] + visited/parent arrays take O(V).
+// adjacency list takes O(V + E).
+// priority queue holds up to O(V) elements.
+// Total space = O(V + E).
+
+
+
 class edge{
     public:
     int v;
