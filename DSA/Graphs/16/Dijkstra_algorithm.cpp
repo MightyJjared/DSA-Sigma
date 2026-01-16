@@ -24,7 +24,11 @@ using namespace std;
 // priority queue holds up to O(V) elements.
 // Total space = O(V + E).
 
-
+/*
+Important note - here we use priority queue instead of normal queue because we can use normal queue also but it
+will just waster our time in prioirty queue since we are using min heap here the level which has the smallest
+distance will be picked which will help us pick the shortest distance
+*/
 
 class edge{
     public:
