@@ -6,6 +6,8 @@ using namespace std;
 
 // Reference: Problem format from GeeksforGeeks (Shortest Path in Weighted Undirected Graph)
 // this is my own code wirth my own logic and this is accepted on geekforgeeks
+// My approach is apply normal dijkstras and instead of storing a pair in priority queue store 2 vectors
+// 1 vector will store the distance and node and another vector will store the path the specific node has travelled
 class Solution {
   public:
     vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
