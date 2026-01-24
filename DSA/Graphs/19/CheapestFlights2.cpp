@@ -4,12 +4,6 @@
 #include <climits>
 using namespace std;
 
-// also  by using this condition current.stops + 1 <= k even if there is a cycle and we are not using visited concept
-// beacuse of this condition even if cycle is there we wont add it or we wont go there
-// also (u) here is current node or vertex
-// also in the dijkstras for edge relaxation we use condition (dist[v] > dist[u] + wt) but here it is important
-// we use (dist[v] > current.cost + wt), ie cost intead of dist[u] as here this time we also have stops or k limitation
-
 /*
     LeetCode Reference: 787. Cheapest Flights Within K Stops
     --------------------------------------------------------

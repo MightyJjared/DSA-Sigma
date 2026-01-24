@@ -4,8 +4,11 @@
 #include <cmath>
 using namespace std;
 
-// LeetCode reference: Minimum Effort Path (Dijkstra approach)
-// This  is striver graph lecture 37 it is a bit on not normal side so for intution check the video
+// LeetCode Reference: Minimum Effort Path (Graph + Dijkstra)
+// the intution is hard so watch striver graph 37 
+// time complexity = E log v ie of dijkstras where e = N * M *4 and v = N * M
+// space Complexity = N * M
+
 class Solution {
 public:
     int minimumEffortPath(vector<vector<int>>& heights) {
@@ -39,9 +42,8 @@ public:
 
             // Checking if we have reached the last cell
             if(row == n-1 && col == m-1){
-                if(effort >= dist[row][col]){ // here since it is min heap and this condition is true then we wont get a smaller final answer it will either be equal or greater
-                    return dist[row][col];
-                }
+                // here since it is min heap and this condition is true then we wont get a smaller final answer it will either be equal or greater
+                return dist[row][col];
             }
 
             for(int i = 0; i < 4; i++){
@@ -57,6 +59,7 @@ public:
                         dist[nextrow][nextcol] = maximum;
                         pq.push({maximum, {nextrow, nextcol}});
                     }
+
                 }
             }
         }
@@ -65,11 +68,10 @@ public:
 };
 
 int main() {
-    // Sample test for VS Code execution
     vector<vector<int>> heights = {
-        {1, 2, 2},
-        {3, 8, 2},
-        {5, 3, 5}
+        {1,2,2},
+        {3,8,2},
+        {5,3,5}
     };
 
     Solution s;
