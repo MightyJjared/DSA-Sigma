@@ -2,6 +2,13 @@
 #include <vector>
 using namespace std;
 
+// Disjoint Set Union (Union-Find)
+// Time Complexity (amortized):
+//   find() and unionByRank() → O(α(n)) ≈ constant time in practice
+// Space Complexity:
+//   O(n) for parent[] and rank[]
+// DSU with path compression + union by rank: ~O(1) time per operation (amortized)
+
 class DisjointSet{
     int n;
     vector<int> parent;
@@ -27,15 +34,17 @@ class DisjointSet{
         int parA = find(A);
         int parB = find(B);
 
+        if(parA == parB) return;   // 🔑 missing guard
+
         if(rank[parA] == rank[parB]){
             parent[parB] = parA;
             rank[parA]++;
         }
         else if (rank[parA] > rank[parB]){
-            parent[parB] = parent[parA];
+            parent[parB] = parA;
         }
         else{
-            parent[parA] = parent[parB];
+            parent[parA] = parB;
         }
     }
 
