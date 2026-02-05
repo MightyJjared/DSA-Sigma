@@ -9,10 +9,35 @@ using namespace std;
 //   O(n) for parent[] and rank[]
 // DSU with path compression + union by rank: ~O(1) time per operation (amortized)
 
+/*
+When to use Disjoint Set Union (DSU / Union-Find):
+
+1. When the problem involves CONNECTED COMPONENTS.
+2. When elements are dynamically connected (edges/nodes added over time).
+3. When you need to answer queries like:
+   - Are two nodes in the same component?
+   - How many connected components exist after each operation?
+4. When DFS/BFS would be too slow due to repeated queries or updates.
+5. When the graph/grid is updated incrementally (dynamic connectivity problems).
+6. When union and find operations are required frequently and efficiently.
+
+Typical examples:
+- Number of Islands II (Dynamic Islands)
+- Number of Provinces / Provinces II
+- Accounts Merge
+- Kruskal’s Minimum Spanning Tree
+- Connecting graph components with minimum operations
+
+Why DSU:
+- Almost O(1) per operation using path compression and union by rank
+- Efficient for large inputs with many queries
+*/
+
 class DisjointSet{
     int n;
     vector<int> parent;
     vector<int> rank;
+    vector<int> size;
 
     public:
     DisjointSet(int n){
@@ -20,6 +45,7 @@ class DisjointSet{
         for(int i =0; i<n; i++){
             parent.push_back(i);
             rank.push_back(0);
+            size.push_back(1);
         }
     }
 
@@ -45,6 +71,26 @@ class DisjointSet{
         }
         else{
             parent[parA] = parB;
+        }
+    }
+
+    void unionBySize(int A, int B){
+        int parA = find(A);
+        int parB = find(B);
+
+        if(parA == parB) return;   // 🔑 missing guard
+
+        if(size[parA] == size[parB]){
+            parent[parB] = parA;
+            size[parA] += size[parB];
+        }
+        else if (size[parA] > size[parB]){
+            parent[parB] = parA;
+            size[parA] += size[parB];
+        }
+        else{
+            parent[parA] = parB;
+            size[parB] += size[parA];
         }
     }
 
