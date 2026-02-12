@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
+#include <algorithm>
 using namespace std;
 
 /*
@@ -7,34 +9,19 @@ LeetCode Reference:
 947. Most Stones Removed with Same Row or Column
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 
-----------------------------------------------------
-Approach (Stone-to-Stone DSU - Brute-force Union):
+Approach:
+- Treat each row and each column as a node in Disjoint Set (Union-Find).
+- Offset column indices by total number of rows to avoid collision.
+- Union the row node and column node for every stone.
+- Count number of connected components that actually appear.
+- Maximum stones removable = total stones - number of connected components.
 
-1. Treat each stone as a node.
-2. Two stones belong to the same component if:
-   - They share the same row, OR
-   - They share the same column.
-3. For every stone i, scan all stones j:
-   - If stones[i] and stones[j] share row or column,
-     union them in DSU.
-4. After building DSU:
-   - Each connected component must keep at least one stone.
-   - All other stones in that component can be removed.
-5. Final answer = total stones − number of connected components.
-
-----------------------------------------------------
 Time Complexity:
-- For each stone, we scan all stones: O(n²)
-- Each DSU operation is amortized O(α(n))
-Overall: O(n² · α(n))
+- O(N * α(N)) where α is inverse Ackermann function (almost constant)
 
 Space Complexity:
-- DSU arrays: O(n)
-Overall: O(n)
+- O(R + C) for DSU arrays, where R = max rows, C = max columns
 */
-// DSU is passed by reference to allow helper() to modify the same
-// disjoint set instance without using globals.
-
 
 class DisjointSet{
 public:
@@ -106,50 +93,56 @@ public:
 
 class Solution {
 public:
-    void helper(int row, int column, int node,
-                vector<vector<int>>& stones,
-                DisjointSet &ds){
-        int n = stones.size();
-        for (int i = 0; i < n; i++) {
-            int currentrow  = stones[i][0];
-            int currentcolumn = stones[i][1];
-            int currentnode = i;
-
-            if(currentrow == row){
-                ds.unionBySize(node, currentnode);
-            }
-            if(currentcolumn == column){
-                ds.unionBySize(node, currentnode);
-            }
-        }
-    }
-
     int removeStones(vector<vector<int>>& stones) {
         int n = stones.size();
-        DisjointSet ds(n);
-
-        for (int i = 0; i < n; i++) {
-            int u = stones[i][0];
-            int v = stones[i][1];
-            helper(u, v, i, stones, ds);
+        
+        int totalrows = 0;
+        int totalcolumns = 0;
+        for(auto itr : stones){
+            int row = itr[0];
+            int col = itr[1];
+            totalrows = max(totalrows, row);
+            totalcolumns = max(totalcolumns, col);
         }
+        
+        totalrows += 1;
+        totalcolumns += 1;
+        int size = totalrows + totalcolumns;
+        DisjointSet ds(size);
 
-        int ans = 0;
-        for(int i = 0; i < n; i++){
-            if(ds.parent[i] != i){
-                ans++;
+        unordered_set<int> s;
+        for(auto itr : stones){
+            int row = itr[0];
+            int col = itr[1];
+
+            col = col + totalrows;
+
+            ds.unionBySize(row, col);
+            s.insert(row);
+            s.insert(col);
+        }
+        
+        int count = 0;
+        for(auto itr : s){
+            if(ds.find(itr) == itr){
+                count++;
             }
         }
+        int ans = n - count;
         return ans;
     }
 };
 
-int main(){
+int main() {
     Solution sol;
 
     vector<vector<int>> stones = {
-        {0,0}, {0,1}, {1,0},
-        {1,2}, {2,1}, {2,2}
+        {0, 0},
+        {0, 1},
+        {1, 0},
+        {1, 2},
+        {2, 1},
+        {2, 2}
     };
 
     cout << sol.removeStones(stones) << endl;
