@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// bitwise problem, here we are calculating x^n orexample - 3^5 = 243;
+// bitwise problem, here we are calculating x^n orexample - 3^5 = 243;S
 void calc_exponential(int x, int n){
     int ans = 1;
     while(n>0){
