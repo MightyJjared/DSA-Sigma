@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 using  namespace std;
 
 class node{
@@ -110,7 +111,32 @@ void levelorder2(node * root){
             q.push(temp -> right);
         }
     }
+}
 
+// here the trick is for preorder since the order is Root->Left->Right
+// And we are using stack so we should first push Right then Left
+void preorderIterative(node* rootnode){
+    stack<node*> s;
+    if(rootnode == NULL){
+        return;
+    }
+
+    s.push(rootnode);
+
+    while(s.size() != 0){
+        node* currentnode = s.top();
+        s.pop();
+
+        cout << currentnode->data << " ";
+        
+        if(currentnode-> right != NULL){
+            s.push(currentnode-> right);
+        }
+
+        if(currentnode-> left != NULL){
+            s.push(currentnode-> left);
+        }
+    }
 }
 
 int main(){
@@ -118,5 +144,6 @@ int main(){
     node *  root = binarytree(preorder);
     levelorder2(root);
     cout << endl;
+    cout << "Hello";
     return 0; 
 }
