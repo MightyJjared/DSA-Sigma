@@ -113,31 +113,7 @@ void levelorder2(node * root){
     }
 }
 
-// here the trick is for preorder since the order is Root->Left->Right
-// And we are using stack so we should first push Right then Left
-void preorderIterative(node* rootnode){
-    stack<node*> s;
-    if(rootnode == NULL){
-        return;
-    }
 
-    s.push(rootnode);
-
-    while(s.size() != 0){
-        node* currentnode = s.top();
-        s.pop();
-
-        cout << currentnode->data << " ";
-        
-        if(currentnode-> right != NULL){
-            s.push(currentnode-> right);
-        }
-
-        if(currentnode-> left != NULL){
-            s.push(currentnode-> left);
-        }
-    }
-}
 
 int main(){
     vector<int> preorder = {1,2,-1,-1,3,4,-1,-1,5,-1,-1};
