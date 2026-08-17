@@ -4,6 +4,10 @@
 #include <algorithm>
 using namespace std;
 
+// This is hard see striver
+// Time Complexity: O(N), where N is the number of nodes.
+
+
 struct TreeNode {
     int val;
     TreeNode *left;
