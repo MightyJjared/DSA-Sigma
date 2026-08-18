@@ -3,6 +3,12 @@
 #include <unordered_map>
 using namespace std;
 
+// THE MAIN INTUTION IS WE WILL START FROM THE TARGET ROOT ITSELF AND AT EACH INSTANCE
+// WE WILL GO UP AS WELL AS DOWN
+// FOR GOING DOWN WE WILL USE RECURSION BUT FOR GOING UP FIRST BEFORE HAND WE WILL DO BFS AND STORE A MAP
+// WHICH WILL CONTAIN THE PARENTS OF EACH NODE
+// WITH THE HELP OF THIS MAP WE WILL MOVE UP 
+
 // Time Complexity: O(N) average, where N is the number of nodes.
 // Space Complexity: O(N), where N is the number of nodes.
 
