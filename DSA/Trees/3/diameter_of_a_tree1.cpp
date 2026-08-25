@@ -2,30 +2,9 @@
 #include <vector>
 #include <queue>
 using  namespace std;
-// time complexty = O(n^2)
 
-    /*
-        This vector represents the following binary tree:
-
-                 1
-               /   \
-              2     3
-                   / \
-                  4   5
-
-        - Each number represents a node.
-        - -1 means NULL (no child in that direction).
-
-        🌟 Diameter of the tree is defined as the length (in number of nodes)
-        of the longest path between any two nodes in the tree.
-
-        🔁 In this case, the longest path is:
-            2 → 1 → 3 → 5
-            Total nodes on this path = 4
-
-        ✅ So, the output will be:
-            diameter = 4
-    */
+// Time Complexity: O(n^2)
+// Space Complexity: O(h), where h is the height of the tree
 
 class node{
     public:
@@ -65,20 +44,11 @@ int diameter(node* root){
     if(root == NULL){
         return 0;
     }
-    int current_diameter = height(root -> left) + height(root -> right) + 1;
+    int current_diameter = height(root -> left) + height(root -> right);
     int left_diameter = diameter(root -> left);
     int right_diameter = diameter(root -> right);
     return max(current_diameter, max(left_diameter, right_diameter));
 }
-
-/*
-    🔁 At each node, the longest path (diameter) could be:
-    1. Passing through the current node: left height + right height + 1
-    2. Completely in the left subtree
-    3. Completely in the right subtree
-
-    ✅ So we calculate all three and return the maximum.
-*/
 
 
 int main(){

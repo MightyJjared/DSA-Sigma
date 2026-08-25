@@ -49,12 +49,16 @@ node* binarytree(vector<int> preorder){
     return root;
 }
 
-void bottomview(node* root){
-    queue<pair<node* ,int>> q; // (node, horizontal distance)
-    q.push(make_pair(root,0));
-    map<int, int> m; // (horizontal distance, root -> data)
+void topView(node* root){
 
-    while(!q.empty()){ // level order traversal
+    queue<pair<node* ,int>> q; // (node, column)
+
+    q.push(make_pair(root,0));
+
+    map<int, int> m; // (column, root -> data)
+
+    while(!q.empty()){ 
+
         pair<node*, int> p = q.front();
 
         node*  currentnode = p.first;
@@ -85,7 +89,7 @@ int main(){
     vector<int> preorder = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
     node *  root = binarytree(preorder);
 
-    bottomview(root);
+    topView(root);
     cout << endl;
     return 0;
 }
