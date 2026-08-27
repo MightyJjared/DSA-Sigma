@@ -46,18 +46,20 @@ node* LCA2(node* root, int n1, int n2){
     }
     node* left = LCA2(root -> left,n1,n2);
     node* right = LCA2(root -> right,n1,n2);
+
     if(left != NULL && right != NULL){
         return root;
     }
+
     if(left == NULL || right == NULL){
         if(left == right){
             return NULL;
         }
         if(left == NULL){
-            return root -> right;
+            return right;
         }
         else{
-            return root -> left;
+            return left;
         }
     }
 }
