@@ -3,6 +3,14 @@
 using namespace std;
 
 /*
+// Overall:
+// Time: O(n + m)
+// Auxiliary Space: O(n + m)
+// (The returned answer itself requires O(n + m) space)
+where n is sie of bst1 and m is of bst2
+*/
+
+/*
   approach_ two merge two BST we will get their sorted order by using inorder_vector funtion then we will have two 
   sorted vectors which we will merge using mergesort logic and het a sorted vector named merged then we will pass it
   balances_BST function to get a BST and we will print its inorder.

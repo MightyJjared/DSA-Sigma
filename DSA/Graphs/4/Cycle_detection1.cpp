@@ -7,7 +7,8 @@ using namespace std;
 // here to detect a cycle , for a node w have 3 cases
 // 1 - it has unvisited neighbours
 // 2- it have visited neighbour but that neighbour is parent node so it cant be a cycle
-// 3 - it has a visited neighbour and it isnt its parent so this is the case where we can cay a cycle exists.
+// 3 - it has a visited neighbour and it isnt its parent so this is the case where we can cay a cycle
+// exists.
 // also back edge is the edge which is responsible for thegraph to become a cycle
 
 // this is for undirected and unweighted graph

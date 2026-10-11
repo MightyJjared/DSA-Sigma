@@ -65,7 +65,7 @@ public:
     }
 
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        int n = image.size(); // rows
+        i/nt n = image.size(); // rows
         int m = image[0].size(); // columns
 
         vector<vector<bool>> visited(n, vector<bool>(m, false));

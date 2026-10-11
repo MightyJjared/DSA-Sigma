@@ -35,7 +35,7 @@ public:
  
          if(k == 0){ 
             result.push_back(currentnode -> val); 
-            return; //because then we will go k=1 and so on if we dont return; 
+            return; //because then we will go k = -1 and so on if we dont return; 
         } 
  
         visited[currentnode] = true; 
