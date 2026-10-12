@@ -5,12 +5,17 @@ using namespace std;
 
 // LeetCode 802: Find Eventual Safe States
 /*
-first of all the logic is if a node is part of a cycle or if it is connceting to a cycle then it cant be safe node
-everything else if safe node
-Approach - we are copying the exact code of cycle checking for directed graph and add an extra array check
-now see in isCycle the for loop part means it is still not decide weather a  node is in cycle or not but if a node
-crossed the fro loop part it is clear that it cant be in cycle or part of a cycle so then we mark that node as 1 
-means it is safe node  then in main fuction we are copying that check array to answer arrya and returning it.
+first of all the logic is if a node is part of a cycle or if it is connceting to a cycle then it cant
+ be safe node
+everything else is safe node
+Approach - we are copying the exact code of cycle checking for directed graph and add an extra array 
+check
+now see in isCycle the for loop part means it is still not decide weather a  node is in cycle or not
+ but if a node
+crossed the fro loop part it is clear that it cant be in cycle or part of a cycle so then we mark that
+ node as 1 
+means it is safe node  then in main fuction we are copying that check array to answer arrya and 
+returning it.
 */
 
 class Solution {
