@@ -83,7 +83,7 @@ class Graph{
         }
         cout << endl;
     }
-};
+}; 
 
 int main(){
     Graph graph(6);

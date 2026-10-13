@@ -2,7 +2,8 @@
 #include <vector>
 using namespace std;
 // leetcode 207
-// here we are apllying not topological but directed cycle grapg detection usin dfs, this is not prferred
+// here we are apllying not topological but directed cycle grapg detection usin dfs, this is not 
+// preferred
 /*
    Question:
    You are given 'numCourses' courses and a list of prerequisite pairs.

@@ -12,8 +12,10 @@ public:
         int n = numCourses;
         vector<int> adj[n];
 
-        for(int i =0; i < graph.size(); i++){ // building adjacency list 
-            adj[graph[i][1]].push_back(graph[i][0]);
+        for(int i =0; i < graph.size(); i++){ // building adjacency list
+            int u = graph[i][0];
+            int v = graph[i][1];
+            adj[v].push_back(u);  
         } 
 
         // calculating indegree for toposort
